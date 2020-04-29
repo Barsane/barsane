@@ -5,10 +5,13 @@
 #ifndef BARZANE_SYMBOLTEST_H
 #define BARZANE_SYMBOLTEST_H
 
+#include <map>
+#include <vector>
 #include "Test.h"
 #include "expect.h"
 #include "../include/Symbol.h"
 
+using namespace std;
 
 class SymbolTest: public Test {
 

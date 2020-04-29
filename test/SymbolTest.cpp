@@ -87,7 +87,7 @@ void SymbolTest::symbolIsType_When_TokenIs() {
 void SymbolTest::symbolIsComa_When_TokenIs() {
     string coma = ",";
     Symbol symbolComa = Symbol(coma, 1, 1);
-    expect(", token type should be COLON", symbolComa.isComa());
+    expect(", token type should be COMA", symbolComa.isComa());
 }
 
 void SymbolTest::symbolIsColon_When_TokenIs() {
@@ -103,47 +103,115 @@ void SymbolTest::symbolIsSemiColon_When_TokenIs() {
 }
 
 void SymbolTest::symbolIsMinus_When_TokenIs() {
-
+    string minus = "-";
+    Symbol symbolMinus = Symbol(minus, 1, 1);
+    expect("- token type should be MINUS", symbolMinus.isMinus());
 }
 
 void SymbolTest::symbolIsLeftBracket_When_TokenIs()  {
-
+    string leftBracket = "(";
+    Symbol symbolLeftBracket = Symbol(leftBracket, 1, 1);
+    expect("( token type should be LEFT_BRACKET", symbolLeftBracket.isLeftBracket());
 }
 
 void SymbolTest::symbolIsRightBracket_When_TokenIs() {
-
+    string rightBracket = ")";
+    Symbol symbolRightBracket = Symbol(rightBracket, 1, 1);
+    expect(") token type should be RIGHT_BRACKET", symbolRightBracket.isRightBracket());
 }
 
 void SymbolTest::symbolIsTermOperator_When_TokenIs() {
+    string minus = "*";
+    Symbol symbolMinus = Symbol(minus, 1, 1);
+    expect("* token type should be term operator", symbolMinus.isTermOperator());
 
+    string plus = "+";
+    Symbol symbolPlus = Symbol(plus, 1, 1);
+    expect("+ token type should be term operator", symbolPlus.isTermOperator());
 }
 
 void SymbolTest::symbolIsOperationOperator_When_TokenIs() {
+    string minus = "-";
+    Symbol symbolMinus = Symbol(minus, 1, 1);
+    expect("- token type should be operation operator", symbolMinus.isOperationOperator());
 
+    string plus = "+";
+    Symbol symbolPlus = Symbol(plus, 1, 1);
+    expect("+ token type should be operation operator", symbolPlus.isOperationOperator());
 }
 
 void SymbolTest::symbolIsAssignment_When_TokenIs() {
-
+    string assignment = "=";
+    Symbol symbolAssignment = Symbol(assignment, 1, 1);
+    expect("= token type should be assignment", symbolAssignment.isAssignment());
 }
 
 void SymbolTest::symbolIsPrint_When_TokenIs() {
-
+    string print = "print";
+    Symbol symbolPrint = Symbol(print, 1, 1);
+    expect("print token type should be PRINT", symbolPrint.isPrint());
 }
 
 void SymbolTest::getToken_When_TokenIs() {
-
+    vector<string> tokens = {"print", "=", ",", ":", ";", "+", "-", "hello", "\"hello world\"", "1"};
+    for (auto token : tokens) {
+        Symbol symbol = Symbol(token, 1, 1);
+        expect(token + " should be itself", symbol.getToken() == token);
+    }
 }
 
 void SymbolTest::getType_When_TokenIs() {
+    map<string, SymbolType> tokens;
 
+    tokens["print"] = PRINT;
+    tokens["="] = ASSIGNMENT;
+    tokens[","] = COMA;
+    tokens[":"] = COLON;
+    tokens[";"] = SEMI_COLON;
+    tokens["+"] = OPERATION_OPERATOR;
+    tokens["-"] = OPERATION_OPERATOR;
+    tokens["*"] = TERM_OPERATOR;
+    tokens["/"] = TERM_OPERATOR;
+    tokens["("] = LEFT_BRACKET;
+    tokens[")"] = RIGHT_BRACKET;
+    tokens["number"] = TYPE;
+    tokens["boolean"] = TYPE;
+    tokens["string"] = TYPE;
+    tokens["\""] = DOUBLE_QUOTATION;
+    tokens["123"] = VALUE;
+    tokens["\"Barzane\""] = VALUE;
+    tokens["true"] = VALUE;
+    tokens["false"] = VALUE;
+    tokens["cou"] = ID;
+    tokens["ùµpmr"] = UNKNOWN;
+    tokens["1g"] = UNKNOWN;
+
+    for (auto token : tokens) {
+        string str = token.first;
+        SymbolType type = token.second;
+        Symbol symbol = Symbol(str, 1, 1);
+        expect(str + " should be expected type", symbol.getType() == type);
+    }
 }
 
 void SymbolTest::getLine_When_ItIs() {
+    string number = "number";
+    Symbol symbolNumber = Symbol(number, 1, 1);
+    expect("Line should be 1", symbolNumber.getLine() == 1);
 
+    string boolTrue = "true";
+    Symbol symbolBoolTrue = Symbol(boolTrue, 1000, 1);
+    expect("Line should be 1000", symbolNumber.getLine() == 1000);
 }
 
 void SymbolTest::getColon_When_ItIs() {
+    string number = "number";
+    Symbol symbolNumber = Symbol(number, 1, 1546);
+    expect("Colon should be 1546", symbolNumber.getColon() == 1546);
 
+    string boolTrue = "true";
+    Symbol symbolBoolTrue = Symbol(boolTrue, 1000, 33);
+    expect("Colon should be 33", symbolNumber.getColon() == 33);
 }
 
 void SymbolTest::run() {

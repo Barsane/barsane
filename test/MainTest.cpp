@@ -9,7 +9,8 @@
 using namespace std;
 
 void testExpect() {
-    string value(getenv("TEST_EXPECT"));
+    char* var = getenv("TEST_EXPECT");
+    string value = var == NULL ? "false" : var;
     if (value == "true") {
         expect("Should be OK",  1 == 1);
         expect("Should be OK", "Hello" == "Hello");
@@ -20,5 +21,8 @@ void testExpect() {
 int main() {
     testExpect();
     SymbolTest().run();
+
+    print_rst();
+
     return 0;
 }
