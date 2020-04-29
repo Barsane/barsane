@@ -17,13 +17,14 @@ enum SymbolType {
     COMA,
     COLON,
     SEMI_COLON,
-    MINUS,
     LEFT_BRACKET,
     RIGHT_BRACKET,
     TERM_OPERATOR,
     OPERATION_OPERATOR,
     ASSIGNMENT,
-    PRINT
+    PRINT,
+
+    UNKNOWN
 };
 
 class Symbol {
@@ -52,7 +53,7 @@ class Symbol {
         static SymbolType typeOf(const string& token);
         static string stringOf(const SymbolType type);
 
-        string &getToken() const;
+        string& getToken() const;
         unsigned int getLine() const;
         unsigned int getColon() const;
         SymbolType getType() const;
