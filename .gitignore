@@ -1,0 +1,10 @@
+# CLion
+.idea/
+
+# Linking
+.dep/
+bin/
+
+# CMake
+cmake-build-debug/
+
