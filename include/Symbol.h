@@ -55,11 +55,13 @@ class Symbol {
         string &getToken() const;
         unsigned int getLine() const;
         unsigned int getColon() const;
+        SymbolType getType() const;
 
 private:
         string& token;
         unsigned int line;
         unsigned int colon;
+        SymbolType type;
 };
 
 

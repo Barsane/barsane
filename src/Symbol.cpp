@@ -5,7 +5,7 @@
 #include "../include/Symbol.h"
 
 Symbol::Symbol(string &token, const unsigned int line, const unsigned int colon)
-    : token(token), line(line), colon(colon){
+    : token(token), line(line), colon(colon), type(typeOf(token)) {
 
 }
 
@@ -87,4 +87,8 @@ unsigned int Symbol::getLine() const {
 
 unsigned int Symbol::getColon() const {
     return colon;
+}
+
+SymbolType Symbol::getType() const {
+    return type;
 }
