@@ -6,6 +6,9 @@
 #define BARZANE_SYMBOLTEST_H
 
 #include "Test.h"
+#include "expect.h"
+#include "../include/Symbol.h"
+
 
 class SymbolTest: public Test {
 

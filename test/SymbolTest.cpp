@@ -4,12 +4,55 @@
 
 #include "SymbolTest.h"
 
+
 void SymbolTest::symbolIsValue_When_TokenIs() {
+    // Test number
+    string twelve = "12";
+    Symbol symbolTwelve = Symbol(twelve, 50, 50);
+    expect("12 token type Should be VALUE", symbolTwelve.isValue());
 
+    // Test boolean
+    string boolTrue = "true";
+    string boolFalse = "false";
+    Symbol symbolBoolTrue = Symbol(boolTrue, 1, 1);
+    Symbol symbolBoolFalse = Symbol(boolFalse, 50, 50);
+    expect("true token type should be VALUE", symbolBoolTrue.isValue());
+    expect("false token type should be VALUE", symbolBoolFalse.isValue());
+
+    // Test string
+    string expr = "\"%£$\tbgoier1\nngbre( pm\"";
+    Symbol symbolExpr = Symbol(expr, 12, 1);
+    expect("\"%£$\\tbgoier1\\nngbre( pm\" token type should be VALUE",
+            symbolExpr.isValue());
+
+    // Out of scope
+    string outOfScope = "abc";
+    Symbol symbolOutOfScope = Symbol(outOfScope, 5, 1);
+    expect("abc token type should not be VALUE",
+            !symbolOutOfScope.isValue());
 }
+
 void SymbolTest::symbolIsId_When_TokenIs() {
+    string smallId = "x";
+    Symbol symbolSmallId = Symbol(smallId, 3, 4);
+    expect("x token type Should be VALUE", symbolSmallId.isId());
+
+    string simpleId = "y_name";
+    Symbol symbolSimpleId = Symbol(simpleId, 4, 5);
+    expect("y_name token type Should be ID", symbolSimpleId.isId());
+
+    string startedWithNum = "1p";
+    Symbol symbolStartedWithNum = Symbol(startedWithNum, 3, 4);
+    expect("1p token type Should not be ID",
+            !symbolStartedWithNum.isId());
+
+    string specialCharIn = "hel%";
+    Symbol symbolSpecialCharIn = Symbol(specialCharIn, 3, 4);
+    expect("hel% token type Should not be ID",
+            !symbolStartedWithNum.isId());
 
 }
+
 void SymbolTest::symbolIsDoubleQuotation_When_TokenIs() {
 
 }
