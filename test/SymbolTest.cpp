@@ -54,38 +54,78 @@ void SymbolTest::symbolIsId_When_TokenIs() {
 }
 
 void SymbolTest::symbolIsDoubleQuotation_When_TokenIs() {
+    string doubleQuotation = "\"";
+    Symbol symbolDoubleQuot = Symbol(doubleQuotation, 1, 1);
+    expect("\" token type should be DOUBLE_QUOTATION",
+            symbolDoubleQuot.isDoubleQuotation());
 
+    string quotation = "'";
+    Symbol symbolQuot = Symbol(quotation, 4, 5);
+    expect("\" token type should not be DOUBLE_QUOTATION",
+           !symbolQuot.isDoubleQuotation());
+
+    string backQuotation = "`";
+    Symbol symbolBackQuotation = Symbol(backQuotation, 2, 3);
+    expect("` token type should not be DOUBLE_QUOTATION",
+           !symbolDoubleQuot.isDoubleQuotation());
 }
+
 void SymbolTest::symbolIsType_When_TokenIs() {
+    string number = "number";
+    string boolean = "boolean";
+    string str = "string";
 
+    Symbol symbolNumber = Symbol(number, 1, 1);
+    Symbol symbolBoolean = Symbol(boolean, 1, 1);
+    Symbol symbolStr = Symbol(str, 1, 1);
+
+    expect("number token type should be TYPE", symbolNumber.isType());
+    expect("boolean token type should be TYPE", symbolBoolean.isType());
+    expect("string token type should be TYPE", symbolStr.isType());
 }
+
 void SymbolTest::symbolIsComa_When_TokenIs() {
-
+    string coma = ",";
+    Symbol symbolComa = Symbol(coma, 1, 1);
+    expect(", token type should be COLON", symbolComa.isComa());
 }
+
 void SymbolTest::symbolIsColon_When_TokenIs() {
-
+    string colon = ":";
+    Symbol symbolColon = Symbol(colon, 1, 1);
+    expect(": token type should be COLON", symbolColon.isColon());
 }
+
 void SymbolTest::symbolIsSemiColon_When_TokenIs() {
-
+    string semiColon = ";";
+    Symbol symbolSemiColon = Symbol(semiColon, 1, 1);
+    expect("; token type should be SEMI_COLON", symbolSemiColon.isSemiColon());
 }
+
 void SymbolTest::symbolIsMinus_When_TokenIs() {
 
 }
+
 void SymbolTest::symbolIsLeftBracket_When_TokenIs()  {
 
 }
+
 void SymbolTest::symbolIsRightBracket_When_TokenIs() {
 
 }
+
 void SymbolTest::symbolIsTermOperator_When_TokenIs() {
 
 }
+
 void SymbolTest::symbolIsOperationOperator_When_TokenIs() {
 
 }
+
 void SymbolTest::symbolIsAssignment_When_TokenIs() {
 
 }
+
 void SymbolTest::symbolIsPrint_When_TokenIs() {
 
 }
@@ -93,12 +133,15 @@ void SymbolTest::symbolIsPrint_When_TokenIs() {
 void SymbolTest::getToken_When_TokenIs() {
 
 }
+
 void SymbolTest::getType_When_TokenIs() {
 
 }
+
 void SymbolTest::getLine_When_ItIs() {
 
 }
+
 void SymbolTest::getColon_When_ItIs() {
 
 }
