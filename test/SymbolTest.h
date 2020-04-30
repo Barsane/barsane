@@ -36,6 +36,7 @@ class SymbolTest: public Test {
 
         void getToken_When_TokenIs();
         void getType_When_TokenIs();
+        void getStringType_When_TypeIs();
         void getLine_When_ItIs();
         void getColon_When_ItIs();
 

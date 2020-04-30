@@ -190,7 +190,32 @@ void SymbolTest::getType_When_TokenIs() {
         string str = token.first;
         SymbolType type = token.second;
         Symbol symbol = Symbol(str, 1, 1);
-        expect(str + " should be expected type", symbol.getType() == type);
+        expect(str + " should be expected type",
+                symbol.getType() == type && Symbol::typeOf(str) == type);
+    }
+}
+
+void SymbolTest::getStringType_When_TypeIs() {
+    map<string, SymbolType> types;
+
+    types["PRINT"] = PRINT;
+    types["ASSIGNMENT"] = ASSIGNMENT;
+    types["COMA"] = COMA;
+    types["COLON"] = COLON;
+    types["SEMI_COLON"] = SEMI_COLON;
+    types["OPERATION_OPERATOR"] = OPERATION_OPERATOR;
+    types["TERM_OPERATOR"] = TERM_OPERATOR;
+    types["LEFT_BRACKET"] = LEFT_BRACKET;
+    types["RIGHT_BRACKET"] = RIGHT_BRACKET;
+    types["TYPE"] = TYPE;
+    types["DOUBLE_QUOTATION"] = DOUBLE_QUOTATION;
+    types["VALUE"] = VALUE;
+    types["ID"] = ID;
+    types["UNKNOWN"] = UNKNOWN;
+
+    for (auto type : types) {
+        expect("Representative type",
+                Symbol::stringOf(type.second) == type.first);
     }
 }
 
@@ -257,6 +282,7 @@ void SymbolTest::run() {
 
     getToken_When_TokenIs();
     getType_When_TokenIs();
+    getStringType_When_TypeIs();
     getLine_When_ItIs();
     getColon_When_ItIs();
 
