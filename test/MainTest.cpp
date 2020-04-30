@@ -6,6 +6,7 @@
 #include "expect.h"
 #include "SymbolTest.h"
 #include "IndexerTest.h"
+#include "ErrorHandlerTest.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ int main() {
 
     SymbolTest().run();
     IndexerTest().run();
+    ErrorHandlerTest().run();
 
     print_rst();
 

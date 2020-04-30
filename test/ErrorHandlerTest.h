@@ -7,7 +7,7 @@
 
 #include "Test.h"
 #include "expect.h"
-#include "ErrorHandler.h"
+#include "../include/ErrorHandler.h"
 
 class ErrorHandlerTest: public Test {
 

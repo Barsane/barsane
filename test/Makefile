@@ -3,7 +3,7 @@ SRC_DIR=../src
 BIN_DIR=../bin
 TARGET=$(BIN_DIR)/run_test
 
-SOURCE_TEST = SymbolTest.cpp IndexerTest.cpp
+SOURCE_TEST = SymbolTest.cpp IndexerTest.cpp ErrorHandlerTest.cpp
 SOURCE = MainTest.cpp $(SOURCE_TEST) $(SRC_DIR)/Symbol.cpp
 
 ## End sources definition
