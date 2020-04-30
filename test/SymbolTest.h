@@ -38,6 +38,10 @@ class SymbolTest: public Test {
         void getType_When_TokenIs();
         void getLine_When_ItIs();
         void getColon_When_ItIs();
+
+        // Rules: line and colon should be greater than 0
+        void catchException_When_LineIsLessThanOne();
+        void catchException_When_ColonIsLessThanOne();
 };
 
 

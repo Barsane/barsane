@@ -214,6 +214,31 @@ void SymbolTest::getColon_When_ItIs() {
     expect("Colon should be 33", symbolNumber.getColon() == 33);
 }
 
+void SymbolTest::catchException_When_LineIsLessThanOne() {
+    bool caught = false;
+    string token = "token";
+    try {
+        Symbol badToken = Symbol(token, 0, 1);
+    } catch (...) {
+        caught = true;
+    }
+
+    expect("Attempt to catch an error", caught == true);
+
+}
+
+void SymbolTest::catchException_When_ColonIsLessThanOne() {
+    bool caught = false;
+    string token = "token";
+    try {
+        Symbol badToken = Symbol(token, 2, 0);
+    } catch (...) {
+        caught = true;
+    }
+
+    expect("Attempt to catch an error", caught == true);
+}
+
 void SymbolTest::run() {
     symbolIsValue_When_TokenIs();
     symbolIsId_When_TokenIs();
@@ -234,4 +259,7 @@ void SymbolTest::run() {
     getType_When_TokenIs();
     getLine_When_ItIs();
     getColon_When_ItIs();
+
+    catchException_When_LineIsLessThanOne();
+    catchException_When_ColonIsLessThanOne();
 }
