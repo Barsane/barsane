@@ -10,6 +10,9 @@ include_directories(test)
 add_executable(barzane
     include/Symbol.h
     include/Indexer.h
+    include/Error.h
+    include/ErrorHandler.h
     src/barzane.cpp
     src/Symbol.cpp
-)
+    src/ErrorHandler.cpp
+    )
