@@ -12,7 +12,7 @@ using namespace std;
 enum ErrorType {
     UNEXPECTED_TOKEN,
 
-    UNKNOWN
+    UNEXPECTED_ERROR
 };
 
 class Error {
