@@ -12,7 +12,9 @@ add_executable(barzane
     include/Indexer.h
     include/Error.h
     include/ErrorHandler.h
+    include/Lexer.h
     src/barzane.cpp
     src/Symbol.cpp
     src/ErrorHandler.cpp
-    )
+    src/Lexer.cpp
+)
