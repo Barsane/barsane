@@ -5,6 +5,7 @@
 #include <iostream>
 #include "expect.h"
 #include "SymbolTest.h"
+#include "IndexerTest.h"
 
 using namespace std;
 
@@ -20,7 +21,9 @@ void testExpect() {
 
 int main() {
     testExpect();
+
     SymbolTest().run();
+    IndexerTest().run();
 
     print_rst();
 
