@@ -7,6 +7,7 @@
 #include "SymbolTest.h"
 #include "IndexerTest.h"
 #include "ErrorHandlerTest.h"
+#include "LexerTest.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ int main() {
     SymbolTest().run();
     IndexerTest().run();
     ErrorHandlerTest().run();
+    LexerTest().run();
 
     print_rst();
 
