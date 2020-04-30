@@ -3,12 +3,13 @@ project(barzane)
 
 set(CMAKE_CXX_STANDARD 20)
 
-include_directories(.)
 include_directories(include)
 include_directories(src)
 include_directories(test)
 
 add_executable(barzane
-        include/Symbol.h
-        src/barzane.cpp
-        src/Symbol.cpp)
+    include/Symbol.h
+    include/Indexer.h
+    src/barzane.cpp
+    src/Symbol.cpp
+)
