@@ -19,7 +19,7 @@ void ErrorHandler::add(Error *error) {
 }
 
 vector<Error *> ErrorHandler::getErrors() {
-    Error* error = new Error(UNKNOWN, "Not implement yet", 1, 1);
+    Error* error = new Error(UNEXPECTED_ERROR, "Not implement yet", 1, 1);
     vector<Error *> rst = {error};
     return rst;
 }
