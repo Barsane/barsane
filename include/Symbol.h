@@ -223,7 +223,7 @@ class Symbol {
          */
         SymbolType getType() const;
 
-private:
+    private:
         string& token;
         unsigned int line;
         unsigned int colon;
