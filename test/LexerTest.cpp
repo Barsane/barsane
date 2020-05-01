@@ -44,30 +44,45 @@ void LexerTest::getTokens_When_TextIs() {
     string print = "print";
     Symbol print31 = Symbol(print, 3, 8);
 
+    // "x: number;\nx = 1;\nprint x;";
     vector<Symbol> tokens = {
             symbolId11,
-            symbolId21,
-            symbolId37,
             colon12,
-            semiColon110,
-            semiColon26,
-            semiColon38,
             symbolType,
+            semiColon110,
+            symbolId21,
             assignment23,
             value25,
-            print31
+            semiColon26,
+            print31,
+            symbolId37,
+            semiColon38
     };
 
     //Then
-    /*for (auto symbol : tokens) {
-        lexer.getTokens().
-        expect("Lexer has a token whose value is " + symbol.getToken(),
-                )
-    }*/
-    expect("Lexer length should be 11", lexer.length() == 11);
+    vector<Symbol*> symbols = lexer.getTokens();
+    for (auto symbol : tokens) {
+        vector<Symbol*>::iterator it = find_if(symbols.begin(), symbols.end(),
+            [symbol] (const Symbol* s) { return s->getToken() == symbol.getToken() &&
+                                                     s->getLine() == symbol.getLine() &&
+                                                     s->getColon() == symbol.getColon(); }
+        );
+        expect("Token " + symbol.getToken() + " should be found",
+                it != symbols.end());
+    }
 }
 
 void LexerTest::catchException_When_MatchUnknownType() {
+    bool caught = false;
+    string text = "x: 1number;\nx = 1;\nprint x;";
+
+    try {
+        Lexer lexer = Lexer(text);
+    } catch (...) {
+        caught = true;
+    }
+
+    expect("An exception should be throw", caught == true);
 }
 
 void LexerTest::run() {

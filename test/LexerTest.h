@@ -6,10 +6,14 @@
 #define BARZANE_LEXERTEST_H
 
 
+#include <vector>
+#include <algorithm>
 #include "Test.h"
 #include "expect.h"
 #include "../include/Lexer.h"
 #include "../include/Symbol.h"
+
+using namespace std;
 
 class LexerTest: public Test {
 
