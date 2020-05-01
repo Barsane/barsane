@@ -11,10 +11,17 @@ Lexer::~Lexer() {
 
 }
 
-vector<Symbol *> Lexer::getTokens() const {
-    return vector<Symbol *>();
+Indexer<Symbol>* Lexer::getTokens() const {
+    return nullptr;
 }
 
 const unsigned int Lexer::length() const {
     return 0;
+}
+
+void Lexer::displayErrors() {
+}
+
+bool Lexer::hasErrors() {
+    return false;
 }

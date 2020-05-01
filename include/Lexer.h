@@ -12,6 +12,14 @@
 
 using namespace std;
 
+/**
+ * The lexer converts a sequence of characters for a given input
+ * into a indexer of tokens (symbol @see Symbol for meaning). It is
+ * defined like the first phase to Barzane compiler.
+ *
+ * It has like also another goal to recovery the matching errors
+ * during the conversion.
+ */
 class Lexer {
 
     friend ostream& operator<<(ostream& out, const Lexer& lexer);
@@ -19,14 +27,47 @@ class Lexer {
     typedef Indexer<char> CharIndexer;
 
     public:
+        /**
+         * Constructor
+         *
+         * @param text: A sequence of characters to tokenize.
+         */
         Lexer(const string& text);
+
+        /**
+         * Destructor
+         */
         ~Lexer();
 
-        vector<Symbol*> getTokens() const;
+        /**
+         * Get the indexed tokens.
+         *
+         * @return a pointer of symbol indexer.
+         */
+        Indexer<Symbol>* getTokens() const;
+
+        /**
+         * Get the total tokens.
+         *
+         * @return a unsigned integer.
+         */
         const unsigned int length() const;
 
+        /**
+         * Display a set of errors recovered while converting.
+         */
+        void displayErrors();
+
+        /**
+         * Check if there is at least one error.
+         *
+         * @return true if there is an error else false.
+         */
+        bool hasErrors();
+
     private:
-        LineIndexer* stream;
+        Indexer<Symbol>* tokens;
+        ErrorHandler errorHandler;
 };
 
 
