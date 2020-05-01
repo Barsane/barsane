@@ -18,10 +18,6 @@ class ErrorHandlerTest: public Test {
     private:
         void verifyEmpty_WhenAdd();
         void verifyEmpty_When_Initiate();
-        void getErrors_When_Empty();
-        void getErrors_WhenAdd();
-
-
 };
 
 
