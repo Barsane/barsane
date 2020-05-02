@@ -60,15 +60,16 @@ void LexerTest::getTokens_When_TextIs() {
     };
 
     //Then
-    vector<Symbol*> symbols = lexer.getTokens();
-    for (auto symbol : tokens) {
-        vector<Symbol*>::iterator it = find_if(symbols.begin(), symbols.end(),
-            [symbol] (const Symbol* s) { return s->getToken() == symbol.getToken() &&
-                                                     s->getLine() == symbol.getLine() &&
-                                                     s->getColon() == symbol.getColon(); }
+    Indexer<Symbol>* symbols = lexer.getTokens();
+    while (!symbols->end()) {
+        Symbol* symbol = symbols->current();
+        vector<Symbol>::iterator it = find_if(tokens.begin(), tokens.end(),
+                [symbol] (const Symbol& s) { return s.getToken() == symbol->getToken() &&
+                                                         s.getLine() == symbol->getLine() &&
+                                                         s.getColon() == symbol->getColon();}
         );
-        expect("Token " + symbol.getToken() + " should be found",
-                it != symbols.end());
+        expect("Token " + symbol->getToken() + " should be found",
+               it != tokens.end());
     }
 }
 
