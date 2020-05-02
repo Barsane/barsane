@@ -88,12 +88,12 @@ void StrTest::strIsAlphaNumUnd_WHen_KeyIs() {
 
 void StrTest::strIsSpecial_When_KeyIs() {
     str special("><µ/-");
-    str badAlpha("><µ/-m");
-    str badNum("><µ/-12");
+    str badAlpha("pom");
+    str badNum("12");
 
     expect("><µ/- should be special", special.isSpecial());
-    expect("><µ/-m should not be special", !badAlpha.isSpecial());
-    expect("><µ/-12 should not be special", !badNum.isSpecial());
+    expect("pomm should not be special", !badAlpha.isSpecial());
+    expect("12 should not be special", !badNum.isSpecial());
 
 }
 
