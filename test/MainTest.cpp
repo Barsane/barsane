@@ -8,6 +8,7 @@
 #include "IndexerTest.h"
 #include "ErrorHandlerTest.h"
 #include "LexerTest.h"
+#include "StrTest.h"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ int main() {
     IndexerTest().run();
     ErrorHandlerTest().run();
     LexerTest().run();
+    StrTest().run();
 
     print_rst();
 
