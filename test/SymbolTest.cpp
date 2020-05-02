@@ -172,7 +172,6 @@ void SymbolTest::getType_When_TokenIs() {
         string str = token.first;
         SymbolType type = token.second;
         Symbol symbol = Symbol(str, 1, 1);
-        cout << str << ": " << token.second << "==" << symbol.getType() << endl;
         expect(str + " should be expected type ",
                 symbol.getType() == type && Symbol::typeOf(str) == type);
     }
