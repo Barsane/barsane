@@ -108,7 +108,7 @@ void SymbolTest::symbolIsTermOperator_When_TokenIs() {
     Symbol symbolMinus = Symbol(minus, 1, 1);
     expect("* token type should be term operator", symbolMinus.isTermOperator());
 
-    string plus = "+";
+    string plus = "/";
     Symbol symbolPlus = Symbol(plus, 1, 1);
     expect("+ token type should be term operator", symbolPlus.isTermOperator());
 }
@@ -164,7 +164,7 @@ void SymbolTest::getType_When_TokenIs() {
     tokens["\"Barzane\""] = VALUE;
     tokens["true"] = VALUE;
     tokens["false"] = VALUE;
-    tokens["cou"] = ID;
+    tokens["cccc"] = ID;
     tokens["ùµpmr"] = UNKNOWN;
     tokens["1g"] = UNKNOWN;
 
@@ -172,7 +172,8 @@ void SymbolTest::getType_When_TokenIs() {
         string str = token.first;
         SymbolType type = token.second;
         Symbol symbol = Symbol(str, 1, 1);
-        expect(str + " should be expected type",
+        cout << str << ": " << token.second << "==" << symbol.getType() << endl;
+        expect(str + " should be expected type ",
                 symbol.getType() == type && Symbol::typeOf(str) == type);
     }
 }
@@ -207,7 +208,7 @@ void SymbolTest::getLine_When_ItIs() {
 
     string boolTrue = "true";
     Symbol symbolBoolTrue = Symbol(boolTrue, 1000, 1);
-    expect("Line should be 1000", symbolNumber.getLine() == 1000);
+    expect("Line should be 1000", symbolBoolTrue.getLine() == 1000);
 }
 
 void SymbolTest::getColon_When_ItIs() {
@@ -217,7 +218,7 @@ void SymbolTest::getColon_When_ItIs() {
 
     string boolTrue = "true";
     Symbol symbolBoolTrue = Symbol(boolTrue, 1000, 33);
-    expect("Colon should be 33", symbolNumber.getColon() == 33);
+    expect("Colon should be 33", symbolBoolTrue.getColon() == 33);
 }
 
 void SymbolTest::catchException_When_LineIsLessThanOne() {
