@@ -74,8 +74,9 @@ SymbolType Symbol::typeOf(const string &token) {
     if (key.isNumeric() || key.isExpression() ||
         token == "true" || token == "false")
         return VALUE;
-    if (first.isAlphaUnd() && key.isAlphaNumUnd() &&
-        !(token == "number" || token == "boolean" || token == "string"))
+    // TODO: refactor
+    if (key.isAlphaNumUnd() && str(token[0]).isAlphaUnd() &&
+        !(token == "number" || token == "boolean" || token == "string" || token == "print"))
         return ID;
     // TODO: Handle type outside
     if (token == "number" || token == "boolean" || token == "string")
@@ -94,12 +95,13 @@ SymbolType Symbol::typeOf(const string &token) {
     if (token == "*" || token == "/")
         return TERM_OPERATOR;
     //TODO: Handle operation operator outside
-    if (token == "+" || token == "")
+    if (token == "+" || token == "-")
         return OPERATION_OPERATOR;
     if (token == "=")
         return ASSIGNMENT;
     if (token == "print")
         return PRINT;
+
     return UNKNOWN;
 }
 
