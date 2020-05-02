@@ -20,12 +20,12 @@ inline bool str::isSpace() const {
 
 inline bool str::isNumeric() const {
     string::size_type i = 0;
-    if (isalpha(key[i]))
+    if (isdigit(key[i]))
         ++i;
     else
         return false;
 
-    while (i < key.length() && isdigit(key[i]))
+    while (i < key.length() && (isdigit(key[i]) || key[i] == '.'))
         ++i;
     return key.length() == i;
 }
@@ -38,17 +38,17 @@ inline bool str::isAlphaUnd() const {
 }
 
 inline bool str::isSpecial() const {
-    return !isAlphaNumUnd() && !isSpace();
+    string::size_type i = 0;
+    while (i < key.length() && !isalnum(key[i]) &&
+           key[i] != '_' && !isspace(key[i]))
+        ++i;
+    return key.length() == i;
 }
 
 inline bool str::isExpression() const {
     string::size_type start = 0;
     string::size_type end = key.size() - 1;
-    if (key[start] == '\"' && key[end] == '\"') {
-        return true;
-    }
-
-    return false;
+    return key[start] == '\"' && key[end] == '\"';
 }
 
 inline bool str::isAlphaNumUnd() const {
@@ -59,12 +59,11 @@ inline bool str::isAlphaNumUnd() const {
 }
 
 
-inline StrType str::initType() const {
-    if (isSpace())          return SPACE;
-    if (isAlphaNumUnd())    return ALPHANUMERIC_OR_UNDERSCORE;
-    if (isSpecial())        return SPECIAL;
-
-    return UNDEFINED;
+inline void str::initType() {
+    if      (isSpace())          type_ = SPACE;
+    else if (isAlphaNumUnd())    type_ = ALPHANUMERIC_OR_UNDERSCORE;
+    else if (isSpecial())        type_ = SPECIAL;
+    else                         type_ = UNDEFINED;
 }
 
 

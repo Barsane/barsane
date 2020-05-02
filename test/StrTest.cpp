@@ -7,14 +7,13 @@
 void StrTest::getType_When_KeyIs() {
     map<string, StrType> keyString;
     keyString[" \t\n  \r"] = SPACE;
-    keyString["1_2ap"] = ALPHANUMERIC_OR_UNDERSCORE;
+   keyString["1_2ap"] = ALPHANUMERIC_OR_UNDERSCORE;
     keyString["12"] = ALPHANUMERIC_OR_UNDERSCORE;
     keyString["abcz"] = ALPHANUMERIC_OR_UNDERSCORE;
     keyString["__"] = ALPHANUMERIC_OR_UNDERSCORE;
-    keyString["(=/*&é\"'(-è_çà)=$ù£ù%!:"] = SPECIAL;
+    keyString["(=/*&é\"'(-èçà)=$ù£ù%!:"] = SPECIAL;
     keyString[" hello"] = UNDEFINED;
     keyString["(=/*&é\"'(-è_çà)=$ù£ù%!:jo"] = UNDEFINED;
-
     for (auto chars : keyString) {
         str key = str(chars.first);
         expect(chars.first + " should be expected type", chars.second == key.getType());

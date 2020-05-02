@@ -6,7 +6,7 @@
 #define BARZANE_STR_H
 
 #include <string>
-#include <ostream>
+#include <iostream>
 
 using namespace std;
 
@@ -21,10 +21,10 @@ enum StrType {
 class str {
 
     public:
-        str(char* chr): key(chr) {};
-        str(const char* chr): key(chr) {};
-        str(char chr): key(1, chr) {};
-        str(string chr): key(chr) {};
+        str(char* chr): key(chr) { initType(); };
+        str(const char* chr): key(chr) { initType(); };
+        str(char chr): key(1, chr) { initType(); };
+        str(string chr): key(chr) { initType(); };
         ~str() {};
 
         StrType getType() const;
@@ -41,7 +41,7 @@ class str {
         string key;
         StrType type_;
 
-        StrType initType() const;
+        void initType();
 
 };
 
