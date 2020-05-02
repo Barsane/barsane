@@ -17,4 +17,5 @@ add_executable(barzane
     src/barzane.cpp
     src/Symbol.cpp
     src/ErrorHandler.cpp
+    src/Lexer.cpp
 )

@@ -6,9 +6,13 @@
 #define BARZANE_LEXER_H
 
 #include <ostream>
+#include <sstream>
+#include <vector>
+#include <algorithm>
 #include "Indexer.h"
 #include "Symbol.h"
 #include "ErrorHandler.h"
+#include "str.h"
 
 using namespace std;
 
@@ -23,8 +27,8 @@ using namespace std;
 class Lexer {
 
     friend ostream& operator<<(ostream& out, const Lexer& lexer);
-    typedef Indexer<Indexer<char>> LineIndexer;
-    typedef Indexer<char> CharIndexer;
+    typedef Indexer<Indexer<str>> LineIndexer;
+    typedef Indexer<str> StrIndexer;
 
     public:
         /**
@@ -66,7 +70,13 @@ class Lexer {
         bool hasErrors();
 
     private:
-        Indexer<Symbol>* tokens;
+        static LineIndexer indexText(const string& text);
+        void tokenize(StrIndexer* strIndexer, unsigned int line);
+        void extractSimpleToken(StrIndexer* strIndexer, unsigned int line);
+        void extractSpecialToken(StrIndexer* strIndexer, unsigned int line);
+
+
+        vector<Symbol*> tokens;
         ErrorHandler errorHandler;
 };
 
