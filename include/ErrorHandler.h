@@ -6,7 +6,10 @@
 #define BARZANE_ERRORHANDLER_H
 
 #include <vector>
+#include <iostream>
 #include "Error.h"
+
+using namespace std;
 
 /**
  *
