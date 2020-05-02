@@ -8,6 +8,7 @@ include_directories(src)
 include_directories(test)
 
 add_executable(barzane
+    include/str.h
     include/Symbol.h
     include/Indexer.h
     include/Error.h
@@ -16,5 +17,4 @@ add_executable(barzane
     src/barzane.cpp
     src/Symbol.cpp
     src/ErrorHandler.cpp
-    src/Lexer.cpp
 )
