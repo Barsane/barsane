@@ -21,7 +21,6 @@ class SymbolTest: public Test {
     private:
         void symbolIsValue_When_TokenIs();
         void symbolIsId_When_TokenIs();
-        void symbolIsDoubleQuotation_When_TokenIs();
         void symbolIsType_When_TokenIs();
         void symbolIsComa_When_TokenIs();
         void symbolIsColon_When_TokenIs();

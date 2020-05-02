@@ -53,23 +53,6 @@ void SymbolTest::symbolIsId_When_TokenIs() {
 
 }
 
-void SymbolTest::symbolIsDoubleQuotation_When_TokenIs() {
-    string doubleQuotation = "\"";
-    Symbol symbolDoubleQuot = Symbol(doubleQuotation, 1, 1);
-    expect("\" token type should be DOUBLE_QUOTATION",
-            symbolDoubleQuot.isDoubleQuotation());
-
-    string quotation = "'";
-    Symbol symbolQuot = Symbol(quotation, 4, 5);
-    expect("\" token type should not be DOUBLE_QUOTATION",
-           !symbolQuot.isDoubleQuotation());
-
-    string backQuotation = "`";
-    Symbol symbolBackQuotation = Symbol(backQuotation, 2, 3);
-    expect("` token type should not be DOUBLE_QUOTATION",
-           !symbolDoubleQuot.isDoubleQuotation());
-}
-
 void SymbolTest::symbolIsType_When_TokenIs() {
     string number = "number";
     string boolean = "boolean";
@@ -177,7 +160,6 @@ void SymbolTest::getType_When_TokenIs() {
     tokens["number"] = TYPE;
     tokens["boolean"] = TYPE;
     tokens["string"] = TYPE;
-    tokens["\""] = DOUBLE_QUOTATION;
     tokens["123"] = VALUE;
     tokens["\"Barzane\""] = VALUE;
     tokens["true"] = VALUE;
@@ -208,7 +190,6 @@ void SymbolTest::getStringType_When_TypeIs() {
     types["LEFT_BRACKET"] = LEFT_BRACKET;
     types["RIGHT_BRACKET"] = RIGHT_BRACKET;
     types["TYPE"] = TYPE;
-    types["DOUBLE_QUOTATION"] = DOUBLE_QUOTATION;
     types["VALUE"] = VALUE;
     types["ID"] = ID;
     types["UNKNOWN"] = UNKNOWN;
@@ -267,7 +248,6 @@ void SymbolTest::catchException_When_ColonIsLessThanOne() {
 void SymbolTest::run() {
     symbolIsValue_When_TokenIs();
     symbolIsId_When_TokenIs();
-    symbolIsDoubleQuotation_When_TokenIs();
     symbolIsType_When_TokenIs();
     symbolIsComa_When_TokenIs();
     symbolIsColon_When_TokenIs();
