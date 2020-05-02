@@ -36,7 +36,7 @@ inline unsigned int __success_counter() {static unsigned int success_count = 0; 
         unsigned int failed = __failed_counter();                                           \
         unsigned int success = __success_counter();                                         \
         std::cout << std::endl << FAILED_COLOR << "Failed: " << --failed << "\t"            \
-                  << SUCCESS_COLOR << "Success: " << --success << RESET_COLOR << std::endl; \
+                  << SUCCESS_COLOR << "Success: " << --success << RESET_COLOR << "\n\n";    \
     }
 
 #endif //BARZANE_EXPECT_H

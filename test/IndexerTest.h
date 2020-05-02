@@ -30,9 +30,9 @@ class IndexerTest: public Test {
         void verifyEnd_When_Initiate();
 
         // Rules
-        void catchException_WhenNext_ThenLast();
-        void catchException_WhenBack_ThenFirst();
-        void catchException_When_OutOfRange();
+        void nullptr_WhenNext_ThenLast();
+        void nullptr_WhenBack_ThenFirst();
+        void nullptr_When_OutOfRange();
 };
 
 

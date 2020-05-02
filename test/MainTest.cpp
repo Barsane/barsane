@@ -25,7 +25,7 @@ int main() {
     testExpect();
 
     SymbolTest().run();
-    // IndexerTest().run();
+    IndexerTest().run();
     // ErrorHandlerTest().run();
     // LexerTest().run();
     StrTest().run();
