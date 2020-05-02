@@ -7,7 +7,6 @@ define SOURCE_TEST
 	SymbolTest.cpp
 	IndexerTest.cpp
 	ErrorHandlerTest.cpp
-	LexerTest.cpp
 	StrTest.cpp
 endef
 
@@ -16,7 +15,6 @@ define SOURCE
 	$(SOURCE_TEST)
 	$(SRC_DIR)/Symbol.cpp
 	$(SRC_DIR)/ErrorHandler.cpp
-	$(SRC_DIR)/Lexer.cpp
 endef
 
 ## End sources definition
