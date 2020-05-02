@@ -74,7 +74,8 @@ SymbolType Symbol::typeOf(const string &token) {
     if (key.isNumeric() || key.isExpression() ||
         token == "true" || token == "false")
         return VALUE;
-    if (first.isAlphaUnd() && key.isAlphaNumUnd())
+    if (first.isAlphaUnd() && key.isAlphaNumUnd() &&
+        !(token == "number" || token == "boolean" || token == "string"))
         return ID;
     // TODO: Handle type outside
     if (token == "number" || token == "boolean" || token == "string")
