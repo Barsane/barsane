@@ -6,6 +6,10 @@
 
 Symbol::Symbol(string &token, const unsigned int line, const unsigned int colon)
     : token(token), line(line), colon(colon), type(typeOf(token)) {
+    if (line == 0)
+        throw "line attribute must be greater than 0";
+    if (colon == 0)
+        throw "colon attribute must be greater than 0";
 }
 
 Symbol::~Symbol() {
