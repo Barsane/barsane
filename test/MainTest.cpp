@@ -26,9 +26,9 @@ int main() {
 
     SymbolTest().run();
     IndexerTest().run();
-    // ErrorHandlerTest().run();
-    // LexerTest().run();
     StrTest().run();
+    ErrorHandlerTest().run();
+    // LexerTest().run();
 
     print_rst();
 

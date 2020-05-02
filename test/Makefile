@@ -28,7 +28,7 @@ OBJ=$(join $(addsuffix $(BIN_DIR)/, $(dir $(SOURCE))), $(notdir $(SOURCE:.cpp=.o
 DEPENDS=$(join $(addsuffix ../.dep/, $(dir $(SOURCE))), $(notdir $(SOURCE:.cpp=.d)))
 
 ## Default rule executed
-all: $(TARGET)
+all: $(TARGET) run
 	@true
 
 ## Clean Rule
@@ -84,3 +84,7 @@ $(SRC_DIR)/../.dep/%.d: %.cpp
 
 ## Include the dependency files
 -include $(DEPENDS)
+
+## Run
+run:
+	$(TARGET)
