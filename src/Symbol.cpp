@@ -6,75 +6,113 @@
 
 Symbol::Symbol(string &token, const unsigned int line, const unsigned int colon)
     : token(token), line(line), colon(colon), type(typeOf(token)) {
-
 }
 
 Symbol::~Symbol() {
-
 }
 
 bool Symbol::isValue() const {
-    return false;
+    return type == VALUE;
 }
 
 bool Symbol::isId() const {
-    return false;
-}
-
-bool Symbol::isDoubleQuotation() const {
-    return false;
+    return type == ID;
 }
 
 bool Symbol::isType() const {
-    return false;
+    return type == TYPE;
 }
 
 bool Symbol::isComa() const {
-    return false;
+    return type == COMA;
 }
 
 bool Symbol::isColon() const {
-    return false;
+    return type == COLON;
 }
 
 bool Symbol::isSemiColon() const {
-    return false;
+    return type == SEMI_COLON;
 }
 
 bool Symbol::isMinus() const {
-    return false;
+    return token == "-";
 }
 
 bool Symbol::isLeftBracket() const {
-    return false;
+    return type == LEFT_BRACKET;
 }
 
 bool Symbol::isRightBracket() const {
-    return false;
+    return type == RIGHT_BRACKET;
 }
 
 bool Symbol::isTermOperator() const {
-    return false;
+    return type == TERM_OPERATOR;
 }
 
 bool Symbol::isOperationOperator() const {
-    return false;
+    return type == OPERATION_OPERATOR;
 }
 
 bool Symbol::isAssignment() const {
-    return false;
+    return type == ASSIGNMENT;
 }
 
 bool Symbol::isPrint() const {
-    return false;
+    return type == PRINT;
 }
 
 SymbolType Symbol::typeOf(const string &token) {
-    return COMA;
+    // TODO: Handle value outside
+    str key = str(token);
+    str first = str(token[0]);
+    if (key.isNumeric() || key.isExpression() ||
+        token == "true" || token == "false")
+        return VALUE;
+    if (first.isAlphaUnd() && key.isAlphaNumUnd())
+        return ID;
+    // TODO: Handle type outside
+    if (token == "number" || token == "boolean" || token == "string")
+        return TYPE;
+    if (token == ",")
+        return COMA;
+    if (token == ":")
+        return COLON;
+    if (token == ";")
+        return SEMI_COLON;
+    if (token == "(")
+        return LEFT_BRACKET;
+    if (token == ")")
+        return RIGHT_BRACKET;
+    //TODO: Handle term operator outside
+    if (token == "*" || token == "/")
+        return TERM_OPERATOR;
+    //TODO: Handle operation operator outside
+    if (token == "+" || token == "")
+        return OPERATION_OPERATOR;
+    if (token == "=")
+        return ASSIGNMENT;
+    if (token == "print")
+        return PRINT;
+    return UNKNOWN;
 }
 
 string Symbol::stringOf(const SymbolType type) {
-    return std::__cxx11::string();
+    if (type == VALUE)                  return "VALUE";
+    if (type == ID)                     return "ID";
+    if (type == TYPE)                   return "TYPE";
+    if (type == COMA)                   return "COMA";
+    if (type == COLON)                  return "COLON";
+    if (type == SEMI_COLON)             return "SEMI_COLON";
+    if (type == LEFT_BRACKET)           return "LEFT_BRACKET";
+    if (type == RIGHT_BRACKET)          return "RIGHT_BRACKET";
+    if (type == OPERATION_OPERATOR)     return "OPERATION_OPERATOR";
+    if (type == TERM_OPERATOR)          return "TERM_OPERATOR";
+    if (type == ASSIGNMENT)             return "ASSIGNMENT";
+    if (type == PRINT)                  return "PRINT";
+
+    return "UNKNOWN";
 }
 
 string &Symbol::getToken() const {
