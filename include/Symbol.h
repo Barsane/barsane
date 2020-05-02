@@ -6,6 +6,8 @@
 #define BARZANE_SYMBOL_H
 
 #include <string>
+#include <map>
+#include "str.h"
 
 using namespace std;
 
@@ -16,7 +18,6 @@ using namespace std;
 enum SymbolType {
     VALUE,
     ID,
-    DOUBLE_QUOTATION,
     TYPE,
     COMA,
     COLON,
@@ -83,14 +84,6 @@ class Symbol {
          *         otherwise false.
          */
         bool isId() const;
-
-        /**
-         * Check if the object symbol is type of DOUBLE_QUOTATION (@see SymbolType).
-         *
-         * @return true if the object symbol is type of DOUBLE_QUOTATION
-         *         otherwise false.
-         */
-        bool isDoubleQuotation() const;
 
         /**
          * Check if the object symbol is type of TYPE (@see SymbolType).
