@@ -74,21 +74,17 @@ void LexerTest::getTokens_When_TextIs() {
     }
 }
 
-void LexerTest::catchException_When_MatchUnknownType() {
+void LexerTest::raiseError_When_InvalidChar() {
     bool caught = false;
-    string text = "x: 1number;\nx = 1;\nprint x;";
+    string text = "x: µnumber;\nx = 1;\nprint x;";
 
-    try {
-        Lexer lexer = Lexer(text);
-    } catch (...) {
-        caught = true;
-    }
+    Lexer lexer = Lexer(text);
 
-    expect("An exception should be throw", caught == true);
+    expect("An error should be raised", lexer.hasErrors());
 }
 
 void LexerTest::run() {
     getLength_When_TextIs();
     getTokens_When_TextIs();
-    // catchException_When_MatchUnknownType();
+    raiseError_When_InvalidChar();
 }

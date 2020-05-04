@@ -25,7 +25,7 @@ class LexerTest: public Test {
         void getLength_When_TextIs();
 
         // Rule: None of token must be UNKNOWN type.
-        void catchException_When_MatchUnknownType();
+        void raiseError_When_InvalidChar();
 };
 
 
