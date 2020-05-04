@@ -37,11 +37,16 @@ inline bool str::isAlphaUnd() const {
     return key.length() == i;
 }
 
+
 inline bool str::isSpecial() const {
     string::size_type i = 0;
-    while (i < key.length() && !isalnum(key[i]) &&
-           key[i] != '_' && !isspace(key[i]))
+    while (i < key.length()) {
+        vector<char>::const_iterator it = find(specials.begin(), specials.end(), key[i]);
+        if (it == specials.end()) {
+            return false;
+        }
         ++i;
+    }
     return key.length() == i;
 }
 

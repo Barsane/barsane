@@ -7,6 +7,8 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -18,7 +20,14 @@ enum StrType {
     UNDEFINED
 };
 
+
 class str {
+
+    const vector<char> specials = {
+            '+', '-', '*', '/', '<', '>', '=',
+            '!', ':', ';', ',', '"', '(', ')',
+            '%',
+    };
 
     public:
         str(char* chr): key(chr) { initType(); };
@@ -44,6 +53,7 @@ class str {
         void initType();
 
 };
+
 
 #include "str.hxx"
 
