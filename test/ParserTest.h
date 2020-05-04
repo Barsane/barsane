@@ -6,6 +6,13 @@
 #define BARZANE_PARSERTEST_H
 
 #include "Test.h"
+#include "expect.h"
+#include "../include/Parser.h"
+#include "../include/Lexer.h"
+#include "../include/AST.h"
+#include "../include/node/Declarations.h"
+#include "../include/node/Affects.h"
+#include "../include/node/Builtins.h"
 
 class ParserTest: Test {
 
@@ -14,16 +21,11 @@ class ParserTest: Test {
 
     private:
         void getTree_When_LexerHasNotError();
-        void getTree_When_HasErrors();
         void raiseError_When_UnknownToken();
         void raiseError_When_MissingToken();
 
         void getTree_When_HasDecl();
         void getTree_When_HasAffect();
-        void getTree_When_HasPrint();
-        void getTree_When_HasAllStatement();
-        void getTree_When_NoneStatement();
-
 };
 
 

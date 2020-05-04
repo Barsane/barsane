@@ -19,6 +19,7 @@ define SOURCE
 	$(SRC_DIR)/ErrorHandler.cpp
 	$(SRC_DIR)/Lexer.cpp
 	$(SRC_DIR)/Parser.cpp
+	$(SRC_DIR)/AST.cpp
 endef
 
 ## End sources definition
