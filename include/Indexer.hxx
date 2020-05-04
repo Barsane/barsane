@@ -32,19 +32,16 @@ template<typename T> T* Indexer<T>::current() {
     return nullptr;
 }
 
-
 template<typename T> unsigned int Indexer<T>::position() {
     return index;
 }
 
-
-
 template<typename T> bool Indexer<T>::end() {
-    return index >= buffer.size() - 1;
+    return index >= buffer.size();
 }
 
 template<typename T> ostream& operator<<(ostream& out, const Indexer<T>& indexer) {
-    out << "Position: " << indexer.position() << " Current: " << indexer.current()
-        << "Is end: " << indexer.end() << endl;
+   /* out << "Position: " << indexer.position() << " Current: " << indexer.current()
+        << "Is end: " << indexer.end() << endl;*/
     return out;
 }

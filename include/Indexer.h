@@ -26,6 +26,14 @@ using namespace std;
  */
 template<typename T> class Indexer {
 
+    /**
+     * A representative object of Indexer class.
+     *
+     * @tparam U: typename to index.
+     * @param out: a stream object.
+     * @param indexer: an indexer to represent
+     * @return Get the given stream after push the representation string.
+     */
     template<typename U> friend ostream& operator<<(ostream& out, const Indexer<U>& indexer);
 
     public:
@@ -99,7 +107,17 @@ template<typename T> class Indexer {
 
 };
 
+
+/**
+ * A representative object of Indexer class.
+ *
+ * @tparam U: typename to index.
+ * @param out: a stream object.
+ * @param indexer: an indexer to represent
+ * @return Get the given stream after push the representation string.
+ */
 template<typename T> ostream& operator<<(ostream& out, const Indexer<T>& indexer);
+
 
 #include "Indexer.hxx"
 
