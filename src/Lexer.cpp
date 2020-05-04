@@ -62,9 +62,11 @@ void Lexer::tokenize(Lexer::StrIndexer* strIndexer, unsigned int line) {
                extractSpecialToken(strIndexer, line);
                break;
            default:
-               // TODO
-               cout << "Not implemented " << "'" << key->value() << "'";
-               exit(1);
+               unsigned int colon = strIndexer->position() + 1;
+               Error* error = new Error(UNEXPECTED_TOKEN, "Invalid character", line, colon);
+               errorHandler.add(error);
+               strIndexer->next();
+               break;
        }
     }
 }
@@ -99,9 +101,9 @@ void Lexer::extractSpecialToken(Lexer::StrIndexer *strIndexer, unsigned int line
 
 ostream& operator<<(ostream& out, const Lexer& lexer) {
     Indexer<Symbol>* tokens = lexer.getTokens();
-   while (!tokens->end()) {
-       cout << *tokens->current();
-       tokens->next();
-   }
-    return out;
+    while (!tokens->end()) {
+        cout << *tokens->current();
+        tokens->next();
+    }
+   return out;
 }
