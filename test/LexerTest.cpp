@@ -72,15 +72,25 @@ void LexerTest::getTokens_When_TextIs() {
                it != tokens.end());
         symbols->next();
     }
+
+    cout << "======================= Lexer output =======================" << endl;
+    cout << lexer;
+    cout << "============================================================" << endl;
 }
 
 void LexerTest::raiseError_When_InvalidChar() {
     bool caught = false;
-    string text = "x: µnumber;\nx = 1;\nprint x;";
+    string text = "x: µ;\nx = 1;\nprint x;";
 
     Lexer lexer = Lexer(text);
-
+    Indexer<Symbol>* tokens = lexer.getTokens();
+    unsigned int knownType = 0;
+    while(!tokens->end() && tokens->current()->getType() != UNKNOWN) {
+        ++knownType;
+        tokens->next();
+    }
     expect("An error should be raised", lexer.hasErrors());
+    expect("The total known tokens should be 10", knownType == 10);
 }
 
 void LexerTest::run() {
