@@ -9,6 +9,7 @@ define SOURCE_TEST
 	ErrorHandlerTest.cpp
 	StrTest.cpp
 	LexerTest.cpp
+	ParserTest.cpp
 endef
 
 define SOURCE
@@ -17,6 +18,7 @@ define SOURCE
 	$(SRC_DIR)/Symbol.cpp
 	$(SRC_DIR)/ErrorHandler.cpp
 	$(SRC_DIR)/Lexer.cpp
+	$(SRC_DIR)/Parser.cpp
 endef
 
 ## End sources definition
