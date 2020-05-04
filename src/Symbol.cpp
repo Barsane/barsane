@@ -122,7 +122,7 @@ string Symbol::stringOf(const SymbolType type) {
     return "UNKNOWN";
 }
 
-string &Symbol::getToken() const {
+const string &Symbol::getToken() const {
     return token;
 }
 
@@ -136,4 +136,20 @@ unsigned int Symbol::getColon() const {
 
 SymbolType Symbol::getType() const {
     return type;
+}
+
+ostream& operator<<(ostream& out, const Symbol& symbol) {
+    stringstream position;
+    position << symbol.getLine();
+    position << ":";
+    position << symbol.getColon();
+
+    out << "Position: " << position.str()
+        << string(15 - position.str().size(), ' ')
+        << "Token: " << symbol.getToken()
+        << string(30 - symbol.getToken().size(), ' ')
+        << "Type: "  << Symbol::stringOf(symbol.getType())
+        << endl;
+
+    return out;
 }

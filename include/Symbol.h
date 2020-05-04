@@ -6,6 +6,7 @@
 #define BARZANE_SYMBOL_H
 
 #include <string>
+#include <sstream>
 #include <map>
 #include "str.h"
 
@@ -196,7 +197,7 @@ class Symbol {
          *
          * @return the token value that is string.
          */
-        string& getToken() const;
+        const string& getToken() const;
 
         /**
          * Get line number.
@@ -217,11 +218,19 @@ class Symbol {
         SymbolType getType() const;
 
     private:
-        string& token;
+        string token;
         unsigned int line;
         unsigned int colon;
         SymbolType type;
 };
 
+
+/**
+ * A representative object of Symbol class.
+ * @param out: a stream object.
+ * @param symbol: A symbol to represent.
+ * @return Get the given stream after push the representation string.
+ */
+ostream& operator<<(ostream& out, const Symbol& symbol);
 
 #endif //BARZANE_SYMBOL_H
