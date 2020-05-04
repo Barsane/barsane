@@ -4,22 +4,25 @@
 
 #include "../include/Lexer.h"
 
-Lexer::Lexer(const string &text): tokens(0) {
+Lexer::Lexer(const string &text) {
     LineIndexer lineIndexer = indexText(text);
     while (!lineIndexer.end()) {
         tokenize(lineIndexer.current(), lineIndexer.position() + 1);
+        lineIndexer.next();
     }
 }
 
 Lexer::~Lexer() {
+    for (auto symbol : tokens)
+        delete symbol;
 }
 
 Indexer<Symbol>* Lexer::getTokens() const {
-    return nullptr;
+    return new Indexer<Symbol>(tokens);
 }
 
 const unsigned int Lexer::length() const {
-    return getTokens()->size();
+    return tokens.size();
 }
 
 void Lexer::displayErrors() {
@@ -46,30 +49,32 @@ Lexer::LineIndexer Lexer::indexText(const string &text) {
 }
 
 void Lexer::tokenize(Lexer::StrIndexer* strIndexer, unsigned int line) {
-        while (!strIndexer->end()) {
-            str* key = strIndexer->current();
-           switch (key->getType()) {
-               case SPACE:
-                   strIndexer->next();
-                   break;
-               case ALPHANUMERIC_OR_UNDERSCORE:
-                   extractSimpleToken(strIndexer, line);
-                   break;
-               case SPECIAL:
-                   extractSpecialToken(strIndexer, line);
-               default:
-                   // TODO
-                   cout << "Not implemented";
-                   break;
-           }
-        }
+    while (!strIndexer->end()) {
+       str* key = strIndexer->current();
+       switch (key->getType()) {
+           case SPACE:
+               strIndexer->next();
+               break;
+           case ALPHANUMERIC_OR_UNDERSCORE:
+               extractSimpleToken(strIndexer, line);
+               break;
+           case SPECIAL:
+               extractSpecialToken(strIndexer, line);
+               break;
+           default:
+               // TODO
+               cout << "Not implemented " << "'" << key->value() << "'";
+               exit(1);
+       }
+    }
 }
 
 void Lexer::extractSimpleToken(Lexer::StrIndexer *strIndexer, unsigned int line) {
     string expression = "";
+    const unsigned int colon = strIndexer->position() + 1;
     while (!strIndexer->end()) {
         str* current = strIndexer->current();
-        if (!current->isSpecial() && current->isSpace()) {
+        if (!current->isSpecial() && !current->isSpace()) {
             expression += current->value();
             strIndexer->next();
         } else {
@@ -78,7 +83,6 @@ void Lexer::extractSimpleToken(Lexer::StrIndexer *strIndexer, unsigned int line)
     }
 
     if (expression != "") {
-        unsigned int colon = strIndexer->position();
         Symbol* symbol = new Symbol(expression, line, colon);
         tokens.push_back(symbol);
     }
@@ -91,4 +95,13 @@ void Lexer::extractSpecialToken(Lexer::StrIndexer *strIndexer, unsigned int line
     Symbol* symbol = new Symbol(token, line, colon);
     tokens.push_back(symbol);
     strIndexer->next();
+}
+
+ostream& operator<<(ostream& out, const Lexer& lexer) {
+    Indexer<Symbol>* tokens = lexer.getTokens();
+   while (!tokens->end()) {
+       cout << *tokens->current();
+       tokens->next();
+   }
+    return out;
 }
