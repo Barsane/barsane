@@ -120,7 +120,7 @@ void IndexerTest::verifyEnd_When_PositionIsLast() {
     Indexer<char>* indexer = new Indexer<char>(text);
 
     // When
-    indexer->reindex(2);
+    indexer->reindex(3);
 
     // Then
     expect("It is end", indexer->end());
