@@ -11,7 +11,7 @@ void StrTest::getType_When_KeyIs() {
     keyString["12"] = ALPHANUMERIC_OR_UNDERSCORE;
     keyString["abcz"] = ALPHANUMERIC_OR_UNDERSCORE;
     keyString["__"] = ALPHANUMERIC_OR_UNDERSCORE;
-    keyString["(=/*&é\"'(-èçà)=$ù£ù%!:"] = SPECIAL;
+    keyString[")(+-"] = SPECIAL;
     keyString[" hello"] = UNDEFINED;
     keyString["(=/*&é\"'(-è_çà)=$ù£ù%!:jo"] = UNDEFINED;
     for (auto chars : keyString) {
@@ -86,12 +86,12 @@ void StrTest::strIsAlphaNumUnd_WHen_KeyIs() {
 }
 
 void StrTest::strIsSpecial_When_KeyIs() {
-    str special("><µ/-");
-    str badAlpha("pom");
+    str special("!=-/");
+    str badAlpha("pom-");
     str badNum("12");
 
     expect("><µ/- should be special", special.isSpecial());
-    expect("pomm should not be special", !badAlpha.isSpecial());
+    expect("pom- should not be special", !badAlpha.isSpecial());
     expect("12 should not be special", !badNum.isSpecial());
 
 }
