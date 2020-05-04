@@ -26,8 +26,16 @@ using namespace std;
  */
 class Lexer {
 
+    /**
+     * A representative object of Lexer class.
+     * @param out: a stream object.
+     * @param symbol: A lexer to represent.
+     * @return Get the given stream after push the representation string.
+     */
     friend ostream& operator<<(ostream& out, const Lexer& lexer);
+
     typedef Indexer<Indexer<str>> LineIndexer;
+
     typedef Indexer<str> StrIndexer;
 
     public:
@@ -80,5 +88,12 @@ class Lexer {
         ErrorHandler errorHandler;
 };
 
+/**
+ * A representative object of Lexer class.
+ * @param out: a stream object.
+ * @param symbol: A lexer to represent.
+ * @return Get the given stream after push the representation string.
+ */
+ostream& operator<<(ostream& out, const Lexer& lexer);
 
 #endif //BARZANE_LEXER_H
