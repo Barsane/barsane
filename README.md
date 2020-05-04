@@ -7,7 +7,6 @@ From the root project, run the following commands:
 ```shell script
 $ cd test
 $ make
-$ ../bin/run_test
 12 token type Should be VALUE
         SymbolTest.cpp:12: void SymbolTest::symbolIsValue_When_TokenIs(): Assertion `symbolTwelve.isValue()` failed 
 true token type should be VALUE
