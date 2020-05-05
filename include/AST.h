@@ -10,17 +10,58 @@
 #include "node/Affects.h"
 #include "node/Builtins.h"
 
-
+/**
+ * It is a tree of the abstract syntactic structure of source
+ * code. it is considered parent node of a program which it is
+ * used to perform validation and produce compile code.
+ *
+ * AST inherits @class Node then it redefines the construct method
+ * to build the the nodes children:
+ *      declarations type of @class Declarations
+ *      affects type of @class Affects
+ *      builtins type of @class Builtins
+ *
+ */
 class AST: public Node {
 
     public:
+        /**
+         * Constructor
+         *
+         * @param tokens: a indexer of a set of tokens.
+         */
         AST(Indexer<Symbol>& tokens);
+
+        /**
+         * Destructor
+         */
         ~AST();
 
+        /**
+         * Construct the high level syntactic structure meaning
+         * the declarations, affects and builtins instructions.
+         */
         void construct();
 
+        /**
+         * Get declarations.
+         *
+         * @return a pointer of declarations (@see Declarations).
+         */
         Declarations* getDeclarations() const;
+
+        /**
+         * Get affects.
+         *
+         * @return a pointer of affects (@see Affects).
+         */
         Affects* getAffects() const;
+
+        /**
+         * Get builtins functions.
+         *
+         * @return a pointer of builtins (@see Builtins).
+         */
         Builtins* getBuiltins() const;
 
     private:
