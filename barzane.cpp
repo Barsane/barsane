@@ -1,7 +1,7 @@
 
 #include <iostream>
-#include "../../include/Lexer.h"
-#include "../../include/Parser.h"
+#include "Lexer.h"
+#include <Parser.h>
 
 int main() {
     string text = "x : number; x = 5; print x;\ny: boolean;";;

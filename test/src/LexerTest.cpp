@@ -2,7 +2,7 @@
 // Created by souls on 30/04/2020.
 //
 
-#include "LexerTest.h"
+#include "../include/LexerTest.h"
 
 void LexerTest::getLength_When_TextIs() {
     // Given

@@ -27,7 +27,7 @@ class Node {
      * @param node: A node to represent.
      * @return Get the given stream after push the representation string.
      */
-    friend ostream& operator<<(ostream& out, const Node& node) { out << node.str(); }
+    friend ostream& operator<<(ostream& out, const Node& node) { out << node.str(); return out; }
 
     public:
         /**

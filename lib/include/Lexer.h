@@ -63,7 +63,7 @@ class Lexer {
          *
          * @return a unsigned integer.
          */
-        const unsigned int length() const;
+        unsigned int length() const;
 
         /**
          * Display a set of errors recovered while converting.

@@ -3,13 +3,13 @@
 //
 
 #include <iostream>
-#include "expect.h"
-#include "SymbolTest.h"
-#include "IndexerTest.h"
-#include "ErrorHandlerTest.h"
-#include "StrTest.h"
-#include "LexerTest.h"
-#include "ParserTest.h"
+#include "../include/expect.h"
+#include "../include/SymbolTest.h"
+#include "../include/IndexerTest.h"
+#include "../include/ErrorHandlerTest.h"
+#include "../include/StrTest.h"
+#include "../include/LexerTest.h"
+#include "../include/ParserTest.h"
 
 using namespace std;
 

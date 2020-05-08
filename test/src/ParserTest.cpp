@@ -2,7 +2,7 @@
 // Created by souls on 04/05/2020.
 //
 
-#include "ParserTest.h"
+#include "../include/ParserTest.h"
 
 void ParserTest::getTree_When_LexerHasNotError() {
     string text = "x: number; x = 5; print x;";

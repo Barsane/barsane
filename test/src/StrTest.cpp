@@ -2,7 +2,7 @@
 // Created by souls on 02/05/2020.
 //
 
-#include "StrTest.h"
+#include "../include/StrTest.h"
 
 void StrTest::getType_When_KeyIs() {
     map<string, StrType> keyString;

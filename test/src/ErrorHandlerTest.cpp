@@ -2,7 +2,7 @@
 // Created by souls on 30/04/2020.
 //
 
-#include "ErrorHandlerTest.h"
+#include "../include/ErrorHandlerTest.h"
 
 void ErrorHandlerTest::verifyEmpty_WhenAdd() {
     // Given

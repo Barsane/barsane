@@ -7,4 +7,4 @@ bin/
 
 # CMake
 cmake-build-debug/
-
+out/

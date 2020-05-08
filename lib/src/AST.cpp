@@ -37,19 +37,19 @@ const string AST::str(unsigned int indentSize) const {
 
     repr << "======================== Abstract Syntax Tree (AST) ========================" << endl;
     if (declarations) {
-        repr << "\"Declarations\": " << *declarations;
+        repr << "\"Declarations\": " << declarations->str(indentSize);
     }
 
     if (affects) {
         if (declarations)
             repr << ",\n";
-        repr << "\"Affects\": "<< *affects;
+        repr << "\"Affects\": "<< affects->str(indentSize);
     }
 
     if (builtins) {
         if (declarations || affects)
             repr << ",\n";
-        repr << "\"Builtins\": " << *builtins;
+        repr << "\"Builtins\": " << builtins->str(indentSize);
     }
 
     repr << endl;

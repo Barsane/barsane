@@ -22,7 +22,7 @@ template<typename T> void Indexer<T>::reindex(unsigned int pos) {
     index = pos;
 }
 
-template<typename T> const unsigned int Indexer<T>::size() const {
+template<typename T> unsigned int Indexer<T>::size() const {
     return buffer.size();
 }
 

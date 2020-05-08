@@ -7,8 +7,8 @@
 
 #include "Test.h"
 #include "expect.h"
-#include "../include/ErrorHandler.h"
-#include "../include/Error.h"
+#include "ErrorHandler.h"
+#include <Error.h>
 
 class ErrorHandlerTest: public Test {
 

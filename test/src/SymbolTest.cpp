@@ -2,7 +2,7 @@
 // Created by souls on 29/04/2020.
 //
 
-#include "SymbolTest.h"
+#include "../include/SymbolTest.h"
 
 
 void SymbolTest::symbolIsValue_When_TokenIs() {

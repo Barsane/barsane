@@ -21,7 +21,7 @@ Indexer<Symbol>* Lexer::getTokens() const {
     return new Indexer<Symbol>(tokens);
 }
 
-const unsigned int Lexer::length() const {
+unsigned int Lexer::length() const {
     return tokens.size();
 }
 

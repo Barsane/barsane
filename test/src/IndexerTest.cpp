@@ -2,7 +2,7 @@
 // Created by souls on 30/04/2020.
 //
 
-#include "IndexerTest.h"
+#include "../include/IndexerTest.h"
 
 void IndexerTest::getCurrent_WhenNext() {
     // Given

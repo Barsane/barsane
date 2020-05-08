@@ -78,7 +78,7 @@ template<typename T> class Indexer {
          *
          * @return an unsigned integer represented the size value.
          */
-        const unsigned int size() const;
+        unsigned int size() const;
 
         /**
          * Get the current element of the index.

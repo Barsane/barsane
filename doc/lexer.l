@@ -11,7 +11,7 @@ type: {number} | {boolean} | {string}
 
 ids: {id} | {id} "," {ids}
 
-declaration: {id} : type ";"
+declaration: {ids} : type ";"
 
 declarations: {declaration} | {declaration} | {declarations}
 
@@ -21,13 +21,13 @@ term: {factor} ("*" | "/") {term} | {factor}
 
 operation: {term} ("+" | "-") {operation} | {term}
 
-affect: {id} "=" ({operation} | {string} | {boolean})
+affect: {id} "=" ({operation} | {string} | {boolean}) ";"
 
 affects: {affect} | {affect} {affects}
 
 expression: {operation} | {string} | {boolean}
 
-print: "print" {expression}
+print: "print" {expression} ";"
 
 builtins: {print}
 
