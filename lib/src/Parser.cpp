@@ -5,26 +5,27 @@
 #include "../include/Parser.h"
 
 Parser::Parser(Lexer &lexer) {
-
+    tree = new AST(*lexer.getTokens());
+    tree->construct();
 }
 
 Parser::~Parser() {
-
+    delete tree;
 }
 
 AST *Parser::getTree() const {
-    return nullptr;
+    return tree;
 }
 
 void Parser::display() {
-
+    cout << *tree;
 }
 
 void Parser::displayErrors() {
-
+    tree->getErrorHandler().display();
 }
 
 bool Parser::hasErrors() {
-    return false;
+    return !tree->getErrorHandler().empty();
 }
 

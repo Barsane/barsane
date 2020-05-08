@@ -14,6 +14,7 @@ using namespace std;
  */
 enum ErrorType {
     UNEXPECTED_TOKEN,
+    SYNTAX_ERROR,
 
     UNEXPECTED_ERROR
 };

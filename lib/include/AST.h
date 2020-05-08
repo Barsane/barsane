@@ -9,6 +9,7 @@
 #include "node/Declarations.h"
 #include "node/Affects.h"
 #include "node/Builtins.h"
+#include "Error.h"
 
 /**
  * It is a tree of the abstract syntactic structure of source
@@ -44,6 +45,13 @@ class AST: public Node {
         void construct();
 
         /**
+         * A representative object of node class.
+         * TODO: arg
+         * @return a string represented the instantiated object.
+         */
+        const string str(unsigned int indentSize) const;
+
+        /**
          * Get declarations.
          *
          * @return a pointer of declarations (@see Declarations).
@@ -64,10 +72,21 @@ class AST: public Node {
          */
         Builtins* getBuiltins() const;
 
+        /**
+         * Get error handler.
+         *
+         * @return errors container whose the content is populate while
+         * constructing the tree.
+         */
+        ErrorHandler& getErrorHandler() const;
+
     private:
         Declarations* declarations;
         Affects* affects;
         Builtins* builtins;
+
+        void buildNodeStartWithId();
+        void buildBuiltins();
 };
 
 #endif //BARZANE_AST_H

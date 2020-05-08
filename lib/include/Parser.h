@@ -6,8 +6,11 @@
 #define BARZANE_PARSER_H
 
 
+#include <iostream>
 #include "Lexer.h"
 #include "AST.h"
+
+using namespace std;
 
 class Parser {
 
@@ -20,6 +23,8 @@ class Parser {
         void displayErrors();
         bool hasErrors();
 
+    private:
+        AST* tree;
 };
 
 
