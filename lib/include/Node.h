@@ -27,7 +27,7 @@ class Node {
      * @param node: A node to represent.
      * @return Get the given stream after push the representation string.
      */
-    friend ostream& operator<<(ostream& out, const Node& node) { out << node.str(); return out; }
+    friend ostream& operator<<(ostream& out, const Node& node) { out << node.json(); return out; }
 
     public:
         /**
@@ -52,7 +52,7 @@ class Node {
          * TODO: optional arg
          * @return a string represented the instantiated object.
          */
-        virtual const string str(unsigned int indentSize = 1) const = 0;
+        virtual const string json(unsigned int indentSize = 1) const = 0;
 
     protected:
         Indexer<Symbol>& indexer;
@@ -61,7 +61,17 @@ class Node {
 
         inline static const char INDENT = ' ';
 
-        Symbol* current() { return indexer.current(); };
+        Symbol* current();
+
+        bool validate(const bool cond, string msg);
+
+        void jump(SymbolType type);
+
+        bool nextIf(const bool cond);
+
+        bool grantNext(const bool cond);
 };
+
+#include "Node.hxx"
 
 #endif //BARZANE_NODE_H
