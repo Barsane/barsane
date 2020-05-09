@@ -28,12 +28,12 @@ void testExpect() {
 int main() {
     testExpect();
 
-    SymbolTest().run();
+    /*SymbolTest().run();
     IndexerTest().run();
     StrTest().run();
     ErrorHandlerTest().run();
     LexerTest().run();
-    NumberTest().run();
+    NumberTest().run();*/
     IdTest().run();
     // ParserTest().run();
 

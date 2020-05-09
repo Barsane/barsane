@@ -5,11 +5,11 @@
 #include "../include/IdTest.h"
 
 void IdTest::run() {
-    getId_When_CurrentIsEmpty();
-    getId_When_NotConstruct();
-    getId_When_BadToken();
+//    getId_When_CurrentIsEmpty();
+//    getId_When_NotConstruct();
+//    getId_When_BadToken();
     positionChanged_WhenConstruct();
-    getName_When_CurrentIs();
+//    getName_When_CurrentIs();
 }
 
 void IdTest::getName_When_CurrentIs() {
@@ -53,14 +53,28 @@ void IdTest::getId_When_BadToken() {
 
 void IdTest::positionChanged_WhenConstruct() {
     string text = "1x";
-    Symbol* symbol = new Symbol(text, 1, 1);
-    vector<Symbol*> symbols = {symbol};
+    string name = "myId";
+    Symbol* bad = new Symbol(text, 1, 1);
+    Symbol* good = new Symbol(name, 164, 125);
+    vector<Symbol*> badBuf = {bad};
+    vector<Symbol*> symbols = {bad, good};
+    Indexer<Symbol> ind = Indexer<Symbol>(badBuf);
     Indexer<Symbol> indexer = Indexer<Symbol>(symbols);
-    Id id = Id(indexer);
 
-    unsigned int previous = indexer.position();
+    Id id = Id(ind);
+
+    unsigned int previous = ind.position();
     id.construct();
-    unsigned int current = indexer.position();
+    unsigned int current = ind.position();
 
-    expect("Current index should be equal the previous added 1", previous == current - 1);
+    expect("Current index should be equal the previous because it is the last",
+            previous + 1 == current);
+
+    previous = indexer.position();
+    Id newId = Id(indexer);
+    newId.construct();
+    current = indexer.position();
+
+    expect("Current index should be the previous added 2",
+           current == previous + 2);
 }

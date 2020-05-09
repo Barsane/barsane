@@ -26,6 +26,7 @@ class NumberTest: public Test {
         void getNumber_When_CurrentIsReal();
         void getNumber_When_NotConstruct();
         void getNumber_When_BadReal();
+        // TODO: Test case when the current is last
         void positionChanged_WhenConstruct();
 };
 
