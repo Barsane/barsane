@@ -86,6 +86,21 @@ void NumberTest::getNumber_When_BadReal() {
     expect("Type number is undefined", number.getType() == NumberType::UNDEFINED);
 }
 
+void NumberTest::positionChanged_WhenConstruct() {
+    string value = "\"152\"";
+    Symbol *any = new Symbol(value, 1, 15);
+    vector<Symbol*> symbols = {any};
+    Indexer<Symbol> indexer = Indexer<Symbol>(symbols);
+    Number number = Number(indexer);
+    unsigned int previous = indexer.position();
+
+    number.construct();
+
+    unsigned int current = indexer.position();
+
+    expect("Current index should be equal the previous added 1", previous == current - 1);
+}
+
 void NumberTest::run() {
     getNumber_When_IndexerIsEmpty();
     getNumber_When_CurrentIsNotCatchable();
@@ -93,4 +108,5 @@ void NumberTest::run() {
     getNumber_When_CurrentIsReal();
     getNumber_When_NotConstruct();
     getNumber_When_BadReal();
+    positionChanged_WhenConstruct();
 }
