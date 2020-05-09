@@ -10,6 +10,7 @@
 #include "../include/StrTest.h"
 #include "../include/LexerTest.h"
 #include "../include/NumberTest.h"
+#include "../include/IdTest.h"
 #include "../include/ParserTest.h"
 
 using namespace std;
@@ -33,6 +34,7 @@ int main() {
     ErrorHandlerTest().run();
     LexerTest().run();
     NumberTest().run();
+    IdTest().run();
     // ParserTest().run();
 
     print_rst();
