@@ -9,6 +9,7 @@
 #include "../include/ErrorHandlerTest.h"
 #include "../include/StrTest.h"
 #include "../include/LexerTest.h"
+#include "../include/NumberTest.h"
 #include "../include/ParserTest.h"
 
 using namespace std;
@@ -31,7 +32,8 @@ int main() {
     StrTest().run();
     ErrorHandlerTest().run();
     LexerTest().run();
-    ParserTest().run();
+    NumberTest().run();
+    // ParserTest().run();
 
     print_rst();
 

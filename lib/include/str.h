@@ -89,50 +89,51 @@ class str {
         string value() const;
 
         /**
-         * Check if the value of object str is a space sequence.
+         * Check if the value of object json is a space sequence.
          *
-         * @return true if the object str is a space sequence
+         * @return true if the object json is a space sequence
          *         otherwise false.
          */
         bool isSpace() const;
 
         /**
-         * Check if the value of object str is a numeric sequence.
+         * Check if the value of object json is a numeric sequence.
+         * Note that the character "." is considered numeric.
          *
-         * @return true if the value of object str is a numeric sequence
+         * @return true if the value of object json is a numeric sequence
          *         otherwise false.
          */
         bool isNumeric() const;
 
         /**
-         * Check if the value of object str is an alphabetic and/or
+         * Check if the value of object json is an alphabetic and/or
          * underscore sequence.
          *
-         * @return true if the value of object str is an alphabetic and/or
+         * @return true if the value of object json is an alphabetic and/or
          * underscore sequence otherwise false.
          */
         bool isAlphaUnd() const;
 
         /**
-         * Check if the value of object str is an alphanumeric and/or
+         * Check if the value of object json is an alphanumeric and/or
          * underscore sequence.
          *
-         * @return true if the value of object str is an alphanumeric and/or
+         * @return true if the value of object json is an alphanumeric and/or
          * sequence underscore otherwise false.
          */
         bool isAlphaNumUnd() const;
 
         /**
-         * Check if the value of object str is a space sequence.
+         * Check if the value of object json is a space sequence.
          *
-         * @return true if the value of object str is a space otherwise false.
+         * @return true if the value of object json is a space otherwise false.
          */
         bool isSpecial() const;
 
         /**
-         * Check if the value of object str start and end with double quote character.
+         * Check if the value of object json start and end with double quote character.
          *
-         * @return true  the value of object str start and end with double character
+         * @return true  the value of object json start and end with double character
          * otherwise false.
          */
         bool isExpression() const;

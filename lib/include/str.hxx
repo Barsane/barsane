@@ -20,7 +20,7 @@ inline bool str::isSpace() const {
 
 inline bool str::isNumeric() const {
     string::size_type i = 0;
-    if (isdigit(key[i]))
+    if (isdigit(key[i]) && isdigit(key[key.length() - 1]))
         ++i;
     else
         return false;

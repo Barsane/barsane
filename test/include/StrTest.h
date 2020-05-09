@@ -11,6 +11,8 @@
 #include "expect.h"
 #include "../include/str.h"
 
+// TODO: Test case when numeric ends up with "." (should not be accepted).
+
 class StrTest: public Test{
 
     public:
