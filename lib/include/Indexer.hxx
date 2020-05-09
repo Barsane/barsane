@@ -27,7 +27,7 @@ template<typename T> unsigned int Indexer<T>::size() const {
 }
 
 template<typename T> T* Indexer<T>::current() {
-    if (index >= 0 && index <= buffer.size() - 1)
+    if (index >= 0 && index < buffer.size())
         return buffer[index];
     return nullptr;
 }
