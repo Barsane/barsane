@@ -49,7 +49,7 @@ class AST: public Node {
          * TODO: arg
          * @return a string represented the instantiated object.
          */
-        const string str(unsigned int indentSize) const;
+        const string json(unsigned int indentSize) const;
 
         /**
          * Get declarations.
