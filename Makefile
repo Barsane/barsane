@@ -129,7 +129,7 @@ run-test:
 
 test: run-test
 
-#.SILENT:
+.SILENT:
 
 .PHONY: clean build run-test run
 
