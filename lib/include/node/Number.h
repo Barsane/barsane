@@ -5,11 +5,16 @@
 #ifndef BARZANE_NUMBER_H
 #define BARZANE_NUMBER_H
 
-
 #include "../Node.h"
-#include <string>
-#include <sstream>
-#include <algorithm>
+#include "../str.h"
+
+namespace NumberType {
+    enum type {
+        INTEGER,
+        REAL,
+        UNDEFINED
+    };
+}
 
 class Number: public Node {
 
@@ -19,14 +24,18 @@ class Number: public Node {
 
         void construct();
 
-        const string str(unsigned int indentSize = 1) const;
+        const string json(unsigned int indentSize = 1) const;
 
         int *getInteger() const;
         float *getReal() const;
+        NumberType::type getType() const;
 
     private:
         int *integer;
         float *real;
+        NumberType::type type;
+
+        void evaluate();
 };
 
 
