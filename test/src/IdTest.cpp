@@ -5,11 +5,11 @@
 #include "../include/IdTest.h"
 
 void IdTest::run() {
-//    getId_When_CurrentIsEmpty();
-//    getId_When_NotConstruct();
-//    getId_When_BadToken();
+    getId_When_CurrentIsEmpty();
+    getId_When_NotConstruct();
+    getId_When_BadToken();
     positionChanged_WhenConstruct();
-//    getName_When_CurrentIs();
+    getName_When_CurrentIs();
 }
 
 void IdTest::getName_When_CurrentIs() {
