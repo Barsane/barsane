@@ -8,6 +8,9 @@
 
 #include "../Node.h"
 
+/**
+ * id: [a-zA-Z_][a-zA-Z0-9_]*
+ */
 class Id: public Node {
 
     public:
@@ -16,7 +19,9 @@ class Id: public Node {
 
         void construct();
 
-        const string str(unsigned int indentSize = 1) const;
+        const string json(unsigned int indentSize = 1) const;
+
+        string *getName() const;
 
     private:
         string* name;

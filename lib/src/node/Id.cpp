@@ -14,18 +14,28 @@ Id::~Id() {
 }
 
 void Id::construct() {
-    name = new string(current()->getToken());
-    indexer.next();
+    if (validate(current()->isId(),
+            "An id must be match this pattern: [a-zA-Z_][a-zA-Z0-9_]*")) {
+        name = new string(current()->getToken());
+    }
 }
 
-const string Id::str(unsigned int indentSize) const {
+const string Id::json(unsigned int indentSize) const {
     stringstream repr;
     string indent(indentSize, INDENT);
     string backIndent(indentSize - 1, INDENT);
+    string strName = "null";
+    if (name)
+        strName = *name;
+
     repr << "{\n" << indent
          << "\"type\": \"Id\","
          << "\n" << indent
-         << "\"name\": " << "\"" << *name << "\""
+         << "\"name\": " << "\"" << strName << "\""
          << "\n" << backIndent << "}";
     return repr.str();
+}
+
+string *Id::getName() const {
+    return name;
 }

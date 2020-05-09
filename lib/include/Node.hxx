@@ -14,7 +14,7 @@ inline bool Node::validate(bool cond, string msg) {
 }
 
 inline void Node::jump(SymbolType type) {
-    while (!indexer.end() && !current()->getType() == type) {
+    while (!indexer.end() && current()->getType() != type) {
         indexer.next();
     }
 }
