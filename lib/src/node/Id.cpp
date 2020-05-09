@@ -14,9 +14,10 @@ Id::~Id() {
 }
 
 void Id::construct() {
+    string token = current()->getToken();
     if (validate(current()->isId(),
             "An id must be match this pattern: [a-zA-Z_][a-zA-Z0-9_]*")) {
-        name = new string(current()->getToken());
+        name = new string(token);
     }
 }
 
