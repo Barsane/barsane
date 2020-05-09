@@ -16,6 +16,9 @@ namespace NumberType {
     };
 }
 
+/**
+ * number: [0-9\.]+
+ */
 class Number: public Node {
 
     public:
