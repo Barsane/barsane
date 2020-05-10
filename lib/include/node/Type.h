@@ -10,6 +10,19 @@
 #include "../Symbol.h"
 #include "../Indexer.h"
 
+
+namespace NodeType {
+    enum type {
+        NUMBER,
+        BOOLEAN,
+        STRING,
+        UNDEFINED
+    };
+}
+
+/**
+ * type: {number} | {boolean} | {string}
+ */
 class Type: public Node {
 
     public:
@@ -17,12 +30,12 @@ class Type: public Node {
         virtual ~Type();
 
         void construct();
-        const string str(unsigned int indentSize = 1) const;
+        const string json(unsigned int indentSize = 1) const;
 
-        string *getValue() const;
+        NodeType::type getType() const;
 
-    private:
-        string* value;
+private:
+        NodeType::type type;
 
 };
 
