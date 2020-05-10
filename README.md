@@ -15,3 +15,8 @@ true token type should be VALUE
 Failed: 77      Success: 24
 
 ```
+
+## Checking memory state
+
+- Install valgrind with: `sudo apt install valgrind` or `sudo yum install valgrind`
+`valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt /bin/testbarzane`
