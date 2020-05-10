@@ -11,6 +11,7 @@
 #include "../include/LexerTest.h"
 #include "../include/NumberTest.h"
 #include "../include/IdTest.h"
+#include "../include/TypeTest.h"
 #include "../include/ParserTest.h"
 
 using namespace std;
@@ -28,13 +29,14 @@ void testExpect() {
 int main() {
     testExpect();
 
-    /*SymbolTest().run();
+    SymbolTest().run();
     IndexerTest().run();
     StrTest().run();
     ErrorHandlerTest().run();
     LexerTest().run();
-    NumberTest().run();*/
+    NumberTest().run();
     IdTest().run();
+    TypeTest().run();
     // ParserTest().run();
 
     print_rst();

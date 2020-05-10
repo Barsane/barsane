@@ -9,7 +9,7 @@ void ErrorHandlerTest::verifyEmpty_WhenAdd() {
     ErrorHandler errorHandler = ErrorHandler();
 
     // When
-    Error* error = new Error(UNEXPECTED_TOKEN, "Unexpected token", 1, 1);
+    Error error = Error(UNEXPECTED_TOKEN, "Unexpected token", 1, 1);
     errorHandler.add(error);
 
     // Then
