@@ -55,7 +55,7 @@ void Lexer::tokenize(Lexer::StrIndexer* strIndexer, unsigned int line) {
            case SPACE:
                strIndexer->next();
                break;
-           case ALPHANUMERIC_OR_UNDERSCORE:
+          case ALPHANUMERIC_OR_UNDERSCORE:
                extractSimpleToken(strIndexer, line);
                break;
            case SPECIAL:
@@ -63,7 +63,7 @@ void Lexer::tokenize(Lexer::StrIndexer* strIndexer, unsigned int line) {
                break;
            default:
                unsigned int colon = strIndexer->position() + 1;
-               Error* error = new Error(UNEXPECTED_TOKEN, "Invalid character", line, colon);
+               Error error = Error(UNEXPECTED_TOKEN, "Invalid character", line, colon);
                errorHandler.add(error);
                strIndexer->next();
                break;

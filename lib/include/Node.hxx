@@ -4,7 +4,7 @@ inline bool Node::validate(bool cond, string msg) {
     if (!nextIf(cond)) {
         unsigned int line = current()->getLine();
         unsigned int colon = current()->getColon();
-        Error* syntax = new Error(SYNTAX_ERROR, msg, line, colon);
+        Error syntax = Error(SYNTAX_ERROR, msg, line, colon);
         errorHandler.add(syntax);
         jump(SEMI_COLON);
         return false;
@@ -32,7 +32,7 @@ inline bool Node::nextIf(const bool cond) {
     if (indexer.end()) {
         unsigned int line = current()->getLine();
         unsigned int colon = current()->getColon();
-        Error* missing = new Error(MISSING_TOKEN, "Missing delimiter ;", line, colon);
+        Error missing = Error(MISSING_TOKEN, "Missing delimiter ;", line, colon);
         errorHandler.add(missing);
         return false;
     }

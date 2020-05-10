@@ -46,7 +46,7 @@ class ErrorHandler {
          *
          * @param error: An error of Error type
          */
-        void add(Error* error);
+        void add(Error error);
 
         /**
          * Display a set of errors stored. Note nothing is displayed
@@ -55,7 +55,7 @@ class ErrorHandler {
         void display();
 
     private:
-        vector<Error*> errors;
+        vector<Error> errors;
 
 };
 

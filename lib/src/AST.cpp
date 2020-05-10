@@ -24,7 +24,7 @@ void AST::construct() {
                 buildBuiltins();
                 break;
             default:
-                Error* error = new Error(SYNTAX_ERROR, "Unrecognized syntax",
+                Error error = Error(SYNTAX_ERROR, "Unrecognized syntax",
                         current()->getLine(), current()->getColon());
                 errorHandler.add(error);
                 indexer.next();
@@ -32,24 +32,24 @@ void AST::construct() {
     }
 }
 
-const string AST::str(unsigned int indentSize) const {
+const string AST::json(unsigned int indentSize) const {
     stringstream repr;
 
     repr << "======================== Abstract Syntax Tree (AST) ========================" << endl;
     if (declarations) {
-        repr << "\"Declarations\": " << declarations->str(indentSize);
+        repr << "\"Declarations\": " << declarations->json(indentSize);
     }
 
     if (affects) {
         if (declarations)
             repr << ",\n";
-        repr << "\"Affects\": "<< affects->str(indentSize);
+        repr << "\"Affects\": "<< affects->json(indentSize);
     }
 
     if (builtins) {
         if (declarations || affects)
             repr << ",\n";
-        repr << "\"Builtins\": " << builtins->str(indentSize);
+        repr << "\"Builtins\": " << builtins->json(indentSize);
     }
 
     repr << endl;
