@@ -4,7 +4,7 @@
 
 #include "../../include/node/Print.h"
 
-Print::Print(Indexer<Symbol> &tokens) : Node(tokens), id(0) {
+Print::Print(Indexer<Symbol>* tokens) : Node(tokens), id(0) {
 }
 
 Print::~Print() {
@@ -13,26 +13,26 @@ Print::~Print() {
 
 void Print::construct() {
     // print
-    indexer.next();
+    indexer->next();
 
     // TODO: extend to expression
-    if (!indexer.end() && current()->isId()) {
+    if (!indexer->end() && current()->isId()) {
         id = new Id(indexer);
         id->construct();
     }
 
     // Check ";"
-    if (!indexer.end() && current()->isSemiColon())
-        indexer.next();
+    if (!indexer->end() && current()->isSemiColon())
+        indexer->next();
 }
 
-const string Print::str(unsigned int indentSize) const {
+const string Print::json(unsigned int indentSize) const {
     stringstream repr;
     string indent(indentSize, INDENT);
     string backIndent(indentSize - 1, INDENT);
     repr << "{\n" << indent
          << "\"type\": \"Print\"," << "\n" << indent
-         << "\"expression\": " << id->str(indentSize + 1)
+         << "\"expression\": " << id->json(indentSize + 1)
          << "\n" << backIndent << "}";
     return repr.str();
 }

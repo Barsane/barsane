@@ -11,12 +11,12 @@
 class Declarations: public Node {
 
     public:
-        Declarations(Indexer<Symbol>& tokens);
+        Declarations(Indexer<Symbol>* tokens);
         ~Declarations();
 
         void construct();
 
-        const string str(unsigned int indentSize = 1) const;
+        const string json(unsigned int indentSize = 1) const;
 
         Declaration *getDeclaration() const;
         Declarations *getDeclarations() const;

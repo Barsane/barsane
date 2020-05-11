@@ -48,14 +48,6 @@ class Node {
         virtual void construct() = 0;
 
         /**
-         * This method destructs the components or leaf node. It also
-         * frees the allocated memory for indexer if there is no
-         * registered instantiate.
-         *
-         */
-        virtual void destruct() = 0;
-
-        /**
          * A representative object of node class.
          * TODO: optional arg
          * @return a string represented the instantiated object.

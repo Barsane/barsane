@@ -4,7 +4,6 @@ inline Node::Node(Indexer<Symbol>* tokens): indexer(tokens) {
 };
 
 inline Node::~Node() {
-    destruct();
     if (!nbInstances) {
         delete indexer;
     }

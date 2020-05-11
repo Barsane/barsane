@@ -22,7 +22,7 @@ namespace NumberType {
 class Number: public Node {
 
     public:
-        Number(Indexer<Symbol>& tokens);
+        Number(Indexer<Symbol>* tokens);
         virtual ~Number();
 
         void construct();

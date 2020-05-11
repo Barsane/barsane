@@ -6,7 +6,7 @@
 
 #include "../../include/node/Id.h"
 
-Id::Id(Indexer<Symbol> &tokens) : Node(tokens), name(0) {
+Id::Id(Indexer<Symbol>* tokens) : Node(tokens), name(0) {
 }
 
 Id::~Id() {

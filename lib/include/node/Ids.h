@@ -12,7 +12,7 @@
 class Ids: public Node {
 
     public:
-        Ids(Indexer<Symbol>& tokens);
+        Ids(Indexer<Symbol>* tokens);
         virtual ~Ids();
 
         void construct();

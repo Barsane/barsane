@@ -14,7 +14,7 @@
 class Id: public Node {
 
     public:
-        Id(Indexer<Symbol>& tokens);
+        Id(Indexer<Symbol>* tokens);
         virtual ~Id();
 
         void construct();

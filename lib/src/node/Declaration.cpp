@@ -4,7 +4,7 @@
 
 #include "../../include/node/Declaration.h"
 
-Declaration::Declaration(Indexer<Symbol> &tokens) : Node(tokens), id(0), type(0) {
+Declaration::Declaration(Indexer<Symbol>* tokens) : Node(tokens), id(0), type(0) {
 }
 
 Declaration::~Declaration() {
@@ -19,30 +19,30 @@ void Declaration::construct() {
     id->construct();
 
     // Check :
-    if (!indexer.end() && current()->isColon()) {
-        indexer.next();
+    if (!indexer->end() && current()->isColon()) {
+        indexer->next();
 
         // type
-        if (!indexer.end() && current()->isType()) {
+        if (!indexer->end() && current()->isType()) {
             type = new Type(indexer);
             type->construct();
         }
     }
 
     // check ;
-    if (!indexer.end() && current()->isSemiColon())
-        indexer.next();
+    if (!indexer->end() && current()->isSemiColon())
+        indexer->next();
 }
 
-const string Declaration::str(unsigned int indentSize) const {
+const string Declaration::json(unsigned int indentSize) const {
     stringstream repr;
     string indent(indentSize, INDENT);
     string backIndent(indentSize - 1, INDENT);
     repr << "{\n" << indent
          << "\"type\": \"Declaration\","
          << "\n" << indent
-         << "\"id\": " << id->str(indentSize + 1) << ",\n" << indent
-         << "\"type_id\": " << type->str(indentSize + 1)
+         << "\"id\": " << id->json(indentSize + 1) << ",\n" << indent
+         << "\"type_id\": " << type->json(indentSize + 1)
          << "\n" << backIndent << "}";
     return repr.str();
 }

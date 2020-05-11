@@ -31,7 +31,7 @@ class AST: public Node {
          *
          * @param tokens: a indexer of a set of tokens.
          */
-        AST(Indexer<Symbol>& tokens);
+        AST(Indexer<Symbol>* tokens);
 
         /**
          * Destructor

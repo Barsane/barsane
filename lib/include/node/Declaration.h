@@ -15,11 +15,11 @@
 class Declaration: Node {
 
     public:
-        Declaration(Indexer<Symbol>& tokens);
+        Declaration(Indexer<Symbol>* tokens);
         virtual ~Declaration();
 
         void construct();
-        const string str(unsigned int indentSize = 1) const;
+        const string json(unsigned int indentSize = 1) const;
 
         Id* getId() const;
         Type* getType();

@@ -12,11 +12,11 @@
 
 class Affect: public Node {
     public:
-        Affect(Indexer<Symbol>& tokens);
+        Affect(Indexer<Symbol>* tokens);
         virtual ~Affect();
 
         void construct();
-        const string str(unsigned int indentSize = 1) const;
+        const string json(unsigned int indentSize = 1) const;
 
         Id* getId() const;
 

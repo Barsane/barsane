@@ -4,7 +4,7 @@
 
 #include "../../include/node/Affects.h"
 
-Affects::Affects(Indexer<Symbol> &tokens) : Node(tokens) {
+Affects::Affects(Indexer<Symbol>* tokens) : Node(tokens) {
     affects = 0;
     affect = 0;
 }
@@ -24,12 +24,12 @@ void Affects::construct() {
     }
 }
 
-const string Affects::str(unsigned int indentSize) const {
+const string Affects::json(unsigned int indentSize) const {
     stringstream repr;
     string indent(indentSize, INDENT);
     string backIndent(indentSize - 1, INDENT);
     if (affect)
-        repr << "[\n" << indent << affect->str(indentSize + 1);
+        repr << "[\n" << indent << affect->json(indentSize + 1);
     if (affects)
         repr << ",\n" << indent << affects->getAffect();
 
@@ -47,12 +47,12 @@ Affects *Affects::getAffects() const {
 
 bool Affects::isNextAffect() {
     // Check id
-    if (!indexer.end() && current()->isId()) {
-        indexer.next();
+    if (!indexer->end() && current()->isId()) {
+        indexer->next();
 
         // check =
-        if(!indexer.end() && current()->isAssignment()) {
-            indexer.back();
+        if(!indexer->end() && current()->isAssignment()) {
+            indexer->back();
             return true;
         }
     }

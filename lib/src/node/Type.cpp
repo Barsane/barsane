@@ -4,7 +4,7 @@
 
 #include "../../include/node/Type.h"
 
-Type::Type(Indexer<Symbol> &tokens): Node(tokens), type(NodeType::UNDEFINED) {
+Type::Type(Indexer<Symbol>* tokens): Node(tokens), type(NodeType::UNDEFINED) {
 }
 
 Type::~Type() {

@@ -4,7 +4,7 @@
 
 #include "../include/AST.h"
 
-AST::AST(Indexer<Symbol> &tokens)
+AST::AST(Indexer<Symbol>* tokens)
     : Node(tokens), declarations(0), affects(0), builtins(0) {
 }
 
@@ -15,7 +15,7 @@ AST::~AST() {
 }
 
 void AST::construct() {
-    while (!indexer.end()) {
+    while (!indexer->end()) {
         switch (current()->getType()) {
             case ID:
                 buildNodeStartWithId();
@@ -27,7 +27,7 @@ void AST::construct() {
                 Error error = Error(SYNTAX_ERROR, "Unrecognized syntax",
                         current()->getLine(), current()->getColon());
                 errorHandler.add(error);
-                indexer.next();
+                indexer->next();
         }
     }
 }
@@ -75,19 +75,19 @@ ErrorHandler& AST::getErrorHandler() const {
 
 void AST::buildNodeStartWithId() {
     // id
-    indexer.next();
+    indexer->next();
 
     // Check if declaration
-    if (!indexer.end() && current()->isColon()) {
-        indexer.back();
+    if (!indexer->end() && current()->isColon()) {
+        indexer->back();
         declarations = new Declarations(indexer);
         declarations->construct();
         return;
     }
 
     // Check if assignment
-    if (!indexer.end() && current()->isAssignment()) {
-        indexer.back();
+    if (!indexer->end() && current()->isAssignment()) {
+        indexer->back();
         affects = new Affects(indexer);
         affects->construct();
     }

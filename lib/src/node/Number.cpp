@@ -5,7 +5,7 @@
 #include "../../include/node/Number.h"
 
 
-Number::Number(Indexer<Symbol> &tokens): Node(tokens), integer(0), real(0), type(NumberType::UNDEFINED) {
+Number::Number(Indexer<Symbol>* tokens): Node(tokens), integer(0), real(0), type(NumberType::UNDEFINED) {
 }
 
 Number::~Number() {
@@ -15,7 +15,7 @@ Number::~Number() {
 
 void Number::construct() {
     evaluate();
-    indexer.next();
+    indexer->next();
 }
 
 const string Number::json(unsigned int indentSize) const {

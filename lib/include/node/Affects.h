@@ -11,11 +11,11 @@
 class Affects: public Node {
 
     public:
-        Affects(Indexer<Symbol>& tokens);
+        Affects(Indexer<Symbol>* tokens);
         ~Affects();
 
         void construct();
-        const string str(unsigned int indentSize = 1) const;
+        const string json(unsigned int indentSize = 1) const;
 
         Affect *getAffect() const;
         Affects *getAffects() const;

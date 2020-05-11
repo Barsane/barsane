@@ -11,11 +11,11 @@
 class Builtins: public Node {
 
     public:
-        Builtins(Indexer<Symbol>& tokens);
+        Builtins(Indexer<Symbol>* tokens);
         ~Builtins();
 
         void construct();
-        const string str(unsigned int indentSize = 1) const;
+        const string json(unsigned int indentSize = 1) const;
 
         Print *getPrint() const;
 

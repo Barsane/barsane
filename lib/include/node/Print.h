@@ -11,12 +11,12 @@
 class Print: public Node {
 
     public:
-        Print(Indexer<Symbol>& tokens);
+        Print(Indexer<Symbol>* tokens);
         virtual ~Print();
 
         void construct();
 
-        const string str(unsigned int indentSize = 1) const;
+        const string json(unsigned int indentSize = 1) const;
 
         Id *getId() const;
 

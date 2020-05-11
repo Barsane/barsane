@@ -5,7 +5,7 @@
 #include "../include/Parser.h"
 
 Parser::Parser(Lexer &lexer) {
-    tree = new AST(*lexer.getTokens());
+    tree = new AST(lexer.getTokens());
     tree->construct();
 }
 

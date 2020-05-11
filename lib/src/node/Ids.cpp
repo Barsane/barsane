@@ -2,9 +2,9 @@
 // Created by souls on 10/05/2020.
 //
 
-#include "Ids.h"
+#include "../../include/node/Ids.h"
 
-Ids::Ids(Indexer<Symbol> &tokens) : Node(tokens) {
+Ids::Ids(Indexer<Symbol>* tokens) : Node(tokens) {
 
 }
 

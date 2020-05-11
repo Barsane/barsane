@@ -26,7 +26,7 @@ namespace NodeType {
 class Type: public Node {
 
     public:
-        Type(Indexer<Symbol>& tokens);
+        Type(Indexer<Symbol>* tokens);
         virtual ~Type();
 
         void construct();
