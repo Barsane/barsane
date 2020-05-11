@@ -16,19 +16,23 @@ void TypeTest::run() {
 
 void TypeTest::getType_When_CurrentIsEmpty() {
     vector<Symbol*> empty = {};
-    Indexer<Symbol> indexer = Indexer<Symbol>(empty);
-    Type type = Type(indexer);
-    type.construct();
+    Indexer<Symbol>* indexer = new Indexer<Symbol>(empty);
+    Type* type = new Type(indexer);
+    type->construct();
 
-    expect("Pointer of type should be 0", type.getType() == NodeType::UNDEFINED);
+    expect("Pointer of type should be 0", type->getType() == NodeType::UNDEFINED);
+
+    delete type;
 }
 
 void TypeTest::getType_When_NotConstruct() {
     vector<Symbol*> empty = {};
-    Indexer<Symbol> indexer = Indexer<Symbol>(empty);
-    Type type = Type(indexer);
+    Indexer<Symbol>* indexer = new Indexer<Symbol>(empty);
+    Type* type = new Type(indexer);
 
-    expect("Pointer of type should be 0", type.getType() == NodeType::UNDEFINED);
+    expect("Pointer of type should be 0", type->getType() == NodeType::UNDEFINED);
+
+    delete type;
 }
 
 void TypeTest::positionChanged_WhenConstruct() {
@@ -40,22 +44,25 @@ void TypeTest::positionChanged_WhenConstruct() {
     vector<Symbol*> medium = {symbolBad, symbolNum};
     Indexer<Symbol>* ind = new Indexer<Symbol>(small);
     Indexer<Symbol>* indexer = new Indexer<Symbol>(medium);
-    Type type = Type(*ind);
+    Type* type = new Type(ind);
 
     unsigned int previous = ind->position();
-    type.construct();
+    type->construct();
     unsigned int current = ind->position();
 
     expect("Current index should be equal the previous because it is the last",
             previous + 1 == current);
 
     previous = indexer->position();
-    Type newType = Type(*indexer);
-    newType.construct();
+    Type* newType = new Type(indexer);
+    newType->construct();
     current = indexer->position();
 
     expect("Current index should be the previous added 2",
            current == previous + 2);
+
+    delete type;
+    delete newType;
 
 }
 
@@ -63,42 +70,50 @@ void TypeTest::getType_When_CurrentIsNumber() {
     string text = "number";
     Symbol* symbol = new Symbol(text, 1, 1);
     vector<Symbol*> symbols = {symbol};
-    Indexer<Symbol> indexer = Indexer<Symbol>(symbols);
-    Type type = Type(indexer);
-    type.construct();
+    Indexer<Symbol>* indexer = new Indexer<Symbol>(symbols);
+    Type* type = new Type(indexer);
+    type->construct();
 
-    expect("Type should be number", type.getType() == NodeType::NUMBER);
+    expect("Type should be number", type->getType() == NodeType::NUMBER);
+
+    delete type;
 }
 
 void TypeTest::getType_When_CurrentIsBoolean() {
     string text = "boolean";
     Symbol* symbol = new Symbol(text, 1, 1);
     vector<Symbol*> symbols = {symbol};
-    Indexer<Symbol> indexer = Indexer<Symbol>(symbols);
-    Type type = Type(indexer);
-    type.construct();
+    Indexer<Symbol>* indexer = new Indexer<Symbol>(symbols);
+    Type* type = new Type(indexer);
+    type->construct();
 
-    expect("Type should be boolean", type.getType() == NodeType::BOOLEAN);
+    expect("Type should be boolean", type->getType() == NodeType::BOOLEAN);
+
+    delete type;
 }
 
 void TypeTest::getType_When_CurrentIsString() {
     string text = "string";
     Symbol* symbol = new Symbol(text, 1, 1);
     vector<Symbol*> symbols = {symbol};
-    Indexer<Symbol> indexer = Indexer<Symbol>(symbols);
-    Type type = Type(indexer);
-    type.construct();
+    Indexer<Symbol>* indexer = new Indexer<Symbol>(symbols);
+    Type* type = new Type(indexer);
+    type->construct();
 
-    expect("Type should be string", type.getType() == NodeType::STRING);
+    expect("Type should be string", type->getType() == NodeType::STRING);
+
+    delete type;
 }
 
 void TypeTest::getType_When_BadToken() {
     string text = "integer";
     Symbol* symbol = new Symbol(text, 1, 1);
     vector<Symbol*> symbols = {symbol};
-    Indexer<Symbol> indexer = Indexer<Symbol>(symbols);
-    Type type = Type(indexer);
-    type.construct();
+    Indexer<Symbol>* indexer = new Indexer<Symbol>(symbols);
+    Type* type = new Type(indexer);
+    type->construct();
 
-    expect("Type should be Undefined", type.getType() == NodeType::UNDEFINED);
+    expect("Type should be Undefined", type->getType() == NodeType::UNDEFINED);
+
+    delete type;
 }
