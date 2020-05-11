@@ -1,4 +1,14 @@
 
+inline Node::Node(Indexer<Symbol>* tokens): indexer(tokens) {
+    ++nbInstances;
+};
+
+inline Node::~Node() {
+    destruct();
+    if (!nbInstances) {
+        delete indexer;
+    }
+}
 
 inline bool Node::validate(bool cond, string msg) {
     if (!nextIf(cond)) {
@@ -14,13 +24,13 @@ inline bool Node::validate(bool cond, string msg) {
 }
 
 inline void Node::jump(SymbolType type) {
-    while (!indexer.end() && current()->getType() != type) {
-        indexer.next();
+    while (!indexer->end() && current()->getType() != type) {
+        indexer->next();
     }
 }
 
 inline Symbol* Node::current() {
-    Symbol* current = indexer.current();
+    Symbol* current = indexer->current();
     if (current)
         return current;
     string unknown = "";
@@ -29,7 +39,7 @@ inline Symbol* Node::current() {
 }
 
 inline bool Node::nextIf(const bool cond) {
-    if (indexer.end()) {
+    if (indexer->end()) {
         unsigned int line = current()->getLine();
         unsigned int colon = current()->getColon();
         Error missing = Error(MISSING_TOKEN, "Missing delimiter ;", line, colon);
@@ -38,7 +48,7 @@ inline bool Node::nextIf(const bool cond) {
     }
 
     if (cond) {
-        indexer.next();
+        indexer->next();
         return true;
     }
 
@@ -46,5 +56,5 @@ inline bool Node::nextIf(const bool cond) {
 }
 
 inline bool Node::grantNext(const bool cond) {
-    return !indexer.end() && cond;
+    return !indexer->end() && cond;
 }

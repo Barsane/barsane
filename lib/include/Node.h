@@ -35,17 +35,25 @@ class Node {
          *
          * @param tokens: a indexer of a set of tokens.
          */
-        Node(Indexer<Symbol>& tokens): indexer(tokens) {};
+        Node(Indexer<Symbol>* tokens);
 
         /**
          * Destructor
          */
-        virtual ~Node() {};
+        virtual ~Node();
 
         /**
          * Construct a subtree to checking syntactic structure.
          */
         virtual void construct() = 0;
+
+        /**
+         * This method destructs the components or leaf node. It also
+         * frees the allocated memory for indexer if there is no
+         * registered instantiate.
+         *
+         */
+        virtual void destruct() = 0;
 
         /**
          * A representative object of node class.
@@ -55,7 +63,7 @@ class Node {
         virtual const string json(unsigned int indentSize = 1) const = 0;
 
     protected:
-        Indexer<Symbol>& indexer;
+        Indexer<Symbol>* indexer;
 
         inline static ErrorHandler errorHandler; // C++17 (inline)
 
@@ -70,6 +78,9 @@ class Node {
         bool nextIf(const bool cond);
 
         bool grantNext(const bool cond);
+
+    private:
+        inline static int nbInstances = 0;
 };
 
 #include "Node.hxx"
