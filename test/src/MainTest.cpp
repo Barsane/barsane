@@ -12,7 +12,6 @@
 #include "../include/NumberTest.h"
 #include "../include/IdTest.h"
 #include "../include/TypeTest.h"
-#include "../include/ParserTest.h"
 
 using namespace std;
 
@@ -37,7 +36,6 @@ int main() {
     NumberTest().run();
     IdTest().run();
     TypeTest().run();
-    // ParserTest().run();
 
     print_rst();
 

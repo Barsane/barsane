@@ -16,39 +16,47 @@ void IdTest::getName_When_CurrentIs() {
     string text = "x";
     Symbol* symbol = new Symbol(text, 1, 1);
     vector<Symbol*> symbols = {symbol};
-    Indexer<Symbol> indexer = Indexer<Symbol>(symbols);
-    Id id = Id(indexer);
-    id.construct();
+    Indexer<Symbol>* indexer = new Indexer<Symbol>(symbols);
+    Id* id = new Id(indexer);
+    id->construct();
 
-    expect("Name should be x", *id.getName() == "x");
+    expect("Name should be x", *id->getName() == "x");
+
+    delete id;
 }
 
 void IdTest::getId_When_CurrentIsEmpty() {
     vector<Symbol*> empty = {};
-    Indexer<Symbol> indexer = Indexer<Symbol>(empty);
-    Id id = Id(indexer);
-    id.construct();
+    Indexer<Symbol>* indexer = new Indexer<Symbol>(empty);
+    Id* id = new Id(indexer);
+    id->construct();
 
-    expect("Pointer of name should be 0", id.getName() == 0);
+    expect("Pointer of name should be 0", id->getName() == 0);
+
+    delete id;
 }
 
 void IdTest::getId_When_NotConstruct() {
     vector<Symbol*> empty = {};
-    Indexer<Symbol> indexer = Indexer<Symbol>(empty);
-    Id id = Id(indexer);
+    Indexer<Symbol>* indexer = new Indexer<Symbol>(empty);
+    Id* id = new Id(indexer);
 
-    expect("Pointer of name should be 0", id.getName() == 0);
+    expect("Pointer of name should be 0", id->getName() == 0);
+
+    delete id;
 }
 
 void IdTest::getId_When_BadToken() {
     string text = "1x";
     Symbol* symbol = new Symbol(text, 1, 1);
     vector<Symbol*> symbols = {symbol};
-    Indexer<Symbol> indexer = Indexer<Symbol>(symbols);
-    Id id = Id(indexer);
-    id.construct();
+    Indexer<Symbol>* indexer = new Indexer<Symbol>(symbols);
+    Id* id = new Id(indexer);
+    id->construct();
 
-    expect("Pointer of name should be 0", id.getName() == 0);
+    expect("Pointer of name should be 0", id->getName() == 0);
+
+    delete id;
 }
 
 void IdTest::positionChanged_WhenConstruct() {
@@ -58,23 +66,26 @@ void IdTest::positionChanged_WhenConstruct() {
     Symbol* good = new Symbol(name, 164, 125);
     vector<Symbol*> badBuf = {bad};
     vector<Symbol*> symbols = {bad, good};
-    Indexer<Symbol> ind = Indexer<Symbol>(badBuf);
-    Indexer<Symbol> indexer = Indexer<Symbol>(symbols);
+    Indexer<Symbol>* ind = new Indexer<Symbol>(badBuf);
+    Indexer<Symbol>* indexer = new Indexer<Symbol>(symbols);
 
-    Id id = Id(ind);
+    Id* id = new Id(ind);
 
-    unsigned int previous = ind.position();
-    id.construct();
-    unsigned int current = ind.position();
+    unsigned int previous = ind->position();
+    id->construct();
+    unsigned int current = ind->position();
 
     expect("Current index should be equal the previous because it is the last",
             previous + 1 == current);
 
-    previous = indexer.position();
-    Id newId = Id(indexer);
-    newId.construct();
-    current = indexer.position();
+    previous = indexer->position();
+    Id* newId = new Id(indexer);
+    newId->construct();
+    current = indexer->position();
 
     expect("Current index should be the previous added 2",
            current == previous + 2);
+
+    delete id;
+    delete newId;
 }
