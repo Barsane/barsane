@@ -72,5 +72,11 @@ void Number::evaluate() {
             istringstream(value) >> *real;
             type = NumberType::REAL;
         }
+    } else {
+        string msg = "A number must be respect this pattern: [0-9\\.]";
+        unsigned int line = current()->getLine();
+        unsigned int colon = current()->getColon();
+        Error error = Error(UNEXPECTED_TOKEN, msg, line, colon);
+        errorHandler.add(error);
     }
 }
