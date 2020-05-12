@@ -191,9 +191,11 @@ void IndexerTest::nullptr_WhenNext_ThenLast() {
     // When
     indexer.next();
     indexer.next();
+    indexer.next();
 
     // Then
-    expect("An exception should be throw", indexer.current() == nullptr);
+    cout << indexer.current() << endl;
+    expect("The current pointer should be 0", indexer.current() == 0);
 }
 
 void IndexerTest::nullptr_WhenBack_ThenFirst() {
@@ -223,7 +225,7 @@ void IndexerTest::nullptr_When_OutOfRange() {
     indexer.reindex(100);
 
     // Then
-    expect("An exception should be throw", indexer.current() == nullptr);
+    expect("An exception should be throw", indexer.current() == 0);
 }
 
 void IndexerTest::run() {
