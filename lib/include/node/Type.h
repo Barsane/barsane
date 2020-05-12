@@ -67,7 +67,7 @@ class Type: public Node {
         NodeType::type getType() const;
 
     private:
-            NodeType::type type;
+        NodeType::type type;
 
 };
 
