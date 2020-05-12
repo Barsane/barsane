@@ -7,7 +7,7 @@ string: ".*"
 
 id: [a-zA-Z_][a-zA-Z0-9_]*
 
-type: {number} | {boolean} | {string}
+type: "number" | "boolean" | "string"
 
 ids: {id} | {id} "," {ids}
 
