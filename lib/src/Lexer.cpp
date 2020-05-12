@@ -18,7 +18,7 @@ Lexer::~Lexer() {
 }
 
 Indexer<Symbol>* Lexer::getTokens() const {
-    indexer;
+    return indexer;
 }
 
 unsigned int Lexer::length() const {
@@ -100,10 +100,8 @@ void Lexer::extractSpecialToken(Lexer::StrIndexer *strIndexer, unsigned int line
 }
 
 ostream& operator<<(ostream& out, const Lexer& lexer) {
-    Indexer<Symbol>* tokens = lexer.getTokens();
-    while (!tokens->end()) {
-        cout << *tokens->current();
-        tokens->next();
-    }
+   for (auto token : lexer.tokens)
+       out << *token;
    return out;
 }
+

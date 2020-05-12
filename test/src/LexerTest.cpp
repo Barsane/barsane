@@ -74,7 +74,7 @@ void LexerTest::getTokens_When_TextIs() {
     }
 
     cout << "======================= Lexer output =======================" << endl;
-    cout << lexer;
+    cout << *lexer;
     cout << "============================================================" << endl;
 
     delete lexer;

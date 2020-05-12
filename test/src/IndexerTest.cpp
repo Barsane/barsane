@@ -194,7 +194,6 @@ void IndexerTest::nullptr_WhenNext_ThenLast() {
     indexer.next();
 
     // Then
-    cout << indexer.current() << endl;
     expect("The current pointer should be 0", indexer.current() == 0);
 }
 
