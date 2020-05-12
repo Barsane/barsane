@@ -8,6 +8,7 @@
 
 #include "../Node.h"
 #include "Id.h"
+#include <string>
 
 class Ids: public Node {
 

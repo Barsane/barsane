@@ -18,9 +18,7 @@ void IdsTest::getIds_When_CurrentIsEmpty() {
     Indexer<Symbol>* indexer = new Indexer<Symbol>(empty);
     Ids* ids = new Ids(indexer);
 
-    cout << "getIds_When_CurrentIsEmpty" << endl;
     ids->construct();
-    cout << "getIds_When_CurrentIsEmpty END" << endl;
 
     expect("Pointer of id should be 0", ids->getId() == 0);
     expect("Pointer of ids should be 0", ids->getIds() == 0);
@@ -50,16 +48,13 @@ void IdsTest::getIds_When_MissingComa() {
     Symbol* symbolY = new Symbol(y, 2, 3);
     vector<Symbol*> symbols = {symbolX, symbolY};
     Indexer<Symbol>* indexer = new Indexer<Symbol>(symbols);
-//    Ids ids = Ids(indexer);
-//    cout << "getIds_When_MissingComa" << endl;
-//    ids.construct();
-//    cout << "getIds_When_MissingComa endl" << endl;
-//
-//    expect("Pointer of id should not be 0", ids.getId() != 0);
-//    expect("The Pointer of id value should not be empty", !ids.getId()->getName().empty());
-//    expect("Pointer of ids should be 0", ids.getIds() == 0);
+    Ids ids = Ids(indexer);
+    ids.construct();
 
-    delete indexer;
+    expect("Pointer of id should not be 0", ids.getId() != 0);
+    expect("The Pointer of id value should not be empty",
+            !ids.getId()->getName()->empty());
+    expect("Pointer of ids should be 0", ids.getIds() == 0);
 }
 
 void IdsTest::positionChanged_WhenConstruct() {
@@ -73,8 +68,6 @@ void IdsTest::positionChanged_WhenConstruct() {
     vector<Symbol*> symbols = {bad, symbolComa, good};
     Indexer<Symbol>* ind = new Indexer<Symbol>(badBuf);
     Indexer<Symbol>* indexer = new Indexer<Symbol>(symbols);
-    cout << indexer << " indexer" << endl;
-    cout << ind << " ind" << endl;
 
     Ids* ids = new Ids(ind);
 
@@ -90,7 +83,7 @@ void IdsTest::positionChanged_WhenConstruct() {
     expect("Current index should be equal the previous because it is the last",
            previous + 1 == current);
     expect("Current index should be equal the previous added 3",
-           prev + 2 == curr);
+           prev + 3 == curr);
 
     delete ids;
     delete newIds;
@@ -124,13 +117,11 @@ void IdsTest::getIds_When_MultipleId() {
     vector<Symbol*> buffer = {symbolVar, symbolComa, symbolY, symbolOtherComa, symbolZ};
     Indexer<Symbol>* indexer = new Indexer<Symbol>(buffer);
     Ids* ids = new Ids(indexer);
-    cout << "getIds_When_MultipleId" << endl;
     ids->construct();
-    cout << "getIds_When_MultipleId end" << endl;
 
     expect("Pointer of id should not be equal 0", ids->getId() != 0);
     expect("Pointer of ids should not be equal 0", ids->getIds() != 0);
-    // expect("Recursion pointer of id should not be equal 0", ids->getIds()->getId() != 0);
+    expect("Recursion pointer of id should not be equal 0", ids->getIds()->getId() != 0);
 
     delete ids;
 }
