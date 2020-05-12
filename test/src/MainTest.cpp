@@ -12,6 +12,7 @@
 #include "../include/NumberTest.h"
 #include "../include/IdTest.h"
 #include "../include/TypeTest.h"
+#include "../include/IdsTest.h"
 
 using namespace std;
 
@@ -36,6 +37,7 @@ int main() {
     NumberTest().run();
     IdTest().run();
     TypeTest().run();
+    IdsTest().run();
 
     print_rst();
 

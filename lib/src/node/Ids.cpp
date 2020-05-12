@@ -4,12 +4,13 @@
 
 #include "../../include/node/Ids.h"
 
-Ids::Ids(Indexer<Symbol>* tokens) : Node(tokens) {
+Ids::Ids(Indexer<Symbol>* tokens) : Node(tokens), ids(0), id(0) {
 
 }
 
 Ids::~Ids() {
-
+    delete ids;
+    delete id;
 }
 
 void Ids::construct() {

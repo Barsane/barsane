@@ -3,11 +3,16 @@
 //
 
 template<typename T> Indexer<T>::Indexer(vector<T*> buf): buffer(buf), index(0) {
+    __documents__.insert(buf.begin(), buf.end());
 }
 
 template<typename T> Indexer<T>::~Indexer() {
-    for (auto elt : buffer)
-        delete elt;
+    for (auto elt : buffer) {
+        if (__documents__.count(elt)) {
+            delete elt;
+            __documents__.erase(elt);
+        }
+    }
 }
 
 template<typename T> void Indexer<T>::next() {

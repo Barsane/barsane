@@ -10,15 +10,15 @@ Lexer::Lexer(const string &text) {
         tokenize(lineIndexer.current(), lineIndexer.position() + 1);
         lineIndexer.next();
     }
+    indexer = new Indexer<Symbol>(tokens);
 }
 
 Lexer::~Lexer() {
-    for (auto symbol : tokens)
-        delete symbol;
+    delete indexer;
 }
 
 Indexer<Symbol>* Lexer::getTokens() const {
-    return new Indexer<Symbol>(tokens);
+    indexer;
 }
 
 unsigned int Lexer::length() const {

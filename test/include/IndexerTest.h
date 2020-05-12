@@ -7,8 +7,10 @@
 
 #include <cstring>
 #include "Test.h"
+#include <str.h>
 #include "expect.h"
-#include "../include/Indexer.h"
+#include "Indexer.h"
+
 
 class IndexerTest: public Test {
 

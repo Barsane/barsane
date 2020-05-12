@@ -1,11 +1,13 @@
 
 inline Node::Node(Indexer<Symbol>* tokens): indexer(tokens) {
-    ++nbInstances;
+    __indexers__.insert(tokens);
 };
 
 inline Node::~Node() {
-    if (!nbInstances) {
+    set<Indexer<Symbol>*>::iterator it;
+    if (__indexers__.count(indexer)) {
         delete indexer;
+        __indexers__.erase(indexer);
     }
 }
 
@@ -33,8 +35,8 @@ inline Symbol* Node::current() {
     if (current)
         return current;
     string unknown = "";
-    static Symbol* symbol = new Symbol(unknown, 1, 1);
-    return symbol;
+    static Symbol symbol = Symbol(unknown, 1, 1);
+    return &symbol;
 }
 
 inline bool Node::nextIf(const bool cond) {

@@ -58,6 +58,8 @@ void NumberTest::getNumber_When_CurrentIsReal() {
     expect("Pointer of integer should be 0", number->getInteger() == 0);
     expect("The value should be 1000.12", *number->getReal() == 1000.12f);
     expect("Type number is REAL", number->getType() == NumberType::REAL);
+
+    delete number;
 }
 
 void NumberTest::getNumber_When_NotConstruct() {
@@ -70,6 +72,8 @@ void NumberTest::getNumber_When_NotConstruct() {
     expect("Pointer of integer should be 0", number->getInteger() == 0);
     expect("Pointer of real should be 0", number->getReal() == 0);
     expect("Type number is undefined", number->getType() == NumberType::UNDEFINED);
+
+    delete number;
 }
 
 void NumberTest::getNumber_When_BadReal() {
@@ -90,6 +94,8 @@ void NumberTest::getNumber_When_BadReal() {
     expect("Pointer of integer should be 0", number->getInteger() == 0);
     expect("Pointer of real should be 0", number->getReal() == 0);
     expect("Type number is undefined", number->getType() == NumberType::UNDEFINED);
+
+    delete number;
 }
 
 void NumberTest::positionChanged_WhenConstruct() {
@@ -105,6 +111,8 @@ void NumberTest::positionChanged_WhenConstruct() {
     unsigned int current = indexer->position();
 
     expect("Current index should be equal the previous added 1", previous == current - 1);
+
+    delete number;
 }
 
 void NumberTest::run() {

@@ -7,6 +7,7 @@
 #define BARZANE_INDEXER_H
 
 #include <vector>
+#include <set>
 #include <iostream>
 #include <ostream>
 
@@ -104,6 +105,9 @@ template<typename T> class Indexer {
     private:
         vector<T*> buffer;
         unsigned int index;
+
+        // INTERNAL USAGE
+        inline static set<T*> __documents__;
 
 };
 

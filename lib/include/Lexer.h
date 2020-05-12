@@ -85,6 +85,7 @@ class Lexer {
 
 
         vector<Symbol*> tokens;
+        Indexer<Symbol>* indexer;
         ErrorHandler errorHandler;
 };
 

@@ -17,7 +17,7 @@ void LexerTest::getTokens_When_TextIs() {
 
     // Given
     string text = "x: number;\nx = 1;\nprint x;";
-    Lexer lexer = Lexer(text);
+    Lexer* lexer = new Lexer(text);
 
     string id = "x";
     Symbol symbolId11 = Symbol(id, 1, 1);
@@ -60,7 +60,7 @@ void LexerTest::getTokens_When_TextIs() {
     };
 
     //Then
-    Indexer<Symbol>* symbols = lexer.getTokens();
+    Indexer<Symbol>* symbols = lexer->getTokens();
     while (!symbols->end()) {
         Symbol* symbol = symbols->current();
         vector<Symbol>::iterator it = find_if(tokens.begin(), tokens.end(),
@@ -76,14 +76,16 @@ void LexerTest::getTokens_When_TextIs() {
     cout << "======================= Lexer output =======================" << endl;
     cout << lexer;
     cout << "============================================================" << endl;
+
+    delete lexer;
 }
 
 void LexerTest::raiseError_When_InvalidChar() {
-    bool caught = false;
     string text = "x: µ;\nx = 1;\nprint x;";
 
     Lexer lexer = Lexer(text);
     Indexer<Symbol>* tokens = lexer.getTokens();
+
     unsigned int knownType = 0;
     while(!tokens->end() && tokens->current()->getType() != UNKNOWN) {
         ++knownType;
@@ -91,6 +93,7 @@ void LexerTest::raiseError_When_InvalidChar() {
     }
     expect("An error should be raised", lexer.hasErrors());
     expect("The total known tokens should be 10", knownType == 10);
+
 }
 
 void LexerTest::run() {

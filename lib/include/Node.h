@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include <set>
 #include "Indexer.h"
 #include "Symbol.h"
 #include "ErrorHandler.h"
@@ -72,7 +73,8 @@ class Node {
         bool grantNext(const bool cond);
 
     private:
-        inline static int nbInstances = 0;
+        // Internal usage fo destructor
+        inline static set<Indexer<Symbol>*> __indexers__;
 };
 
 #include "Node.hxx"
