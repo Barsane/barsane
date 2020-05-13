@@ -96,8 +96,21 @@ void LexerTest::raiseError_When_InvalidChar() {
 
 }
 
+void LexerTest::getTokens_When_TextIsNegNum() {
+    string text = "-3";
+
+    Lexer lexer = Lexer(text);
+    Indexer<Symbol>* tokens = lexer.getTokens();
+
+    expect("Token length should be equal 2", lexer.length());
+    expect("First token should be minus", tokens->current()->getToken() == "-");
+    tokens->next();
+    expect("Second token should be 3", tokens->current()->getToken() == "3");
+}
+
 void LexerTest::run() {
     getLength_When_TextIs();
     getTokens_When_TextIs();
     raiseError_When_InvalidChar();
+    getTokens_When_TextIsNegNum();
 }

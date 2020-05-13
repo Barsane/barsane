@@ -9,6 +9,7 @@
 #include "Test.h"
 #include "expect.h"
 #include <node/Factor.h>
+#include <node/Operation.h>
 
 /**
  * factor: ["-"] {id} | ["-"] {number} | "(" {operation} ")"
@@ -27,6 +28,7 @@ class FactorTest: Test {
         void getFactor_When_CurrentIsLeftBracket();
         void getFactor_When_CurrentIsId();
         void getFactor_When_CurrentIsNumber();
+        void getFactor_When_NestedDeep();
 };
 
 

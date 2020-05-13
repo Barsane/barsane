@@ -17,8 +17,9 @@ Operation::~Operation() {
 
 void Operation::construct() {
     // term
+    unsigned int position = indexer->position();
     if (validate(isFactor(), "Expected term expression.")) {
-        indexer->back();
+        indexer->reindex(position);
         term = new Term(indexer);
         term->construct();
     }

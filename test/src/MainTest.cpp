@@ -32,17 +32,17 @@ void testExpect() {
 int main() {
     testExpect();
 
-    SymbolTest().run();
-    IndexerTest().run();
-    StrTest().run();
-    ErrorHandlerTest().run();
-    LexerTest().run();
-    NumberTest().run();
-    IdTest().run();
-    TypeTest().run();
-    IdsTest().run();
-    DeclarationTest().run();
-    DeclarationsTest().run();
+//    SymbolTest().run();
+//    IndexerTest().run();
+//    StrTest().run();
+//    ErrorHandlerTest().run();
+//    LexerTest().run();
+//    NumberTest().run();
+//    IdTest().run();
+//    TypeTest().run();
+//    IdsTest().run();
+//    DeclarationTest().run();
+//    DeclarationsTest().run();
     FactorTest().run();
 
     print_rst();

@@ -23,6 +23,7 @@ class LexerTest: public Test {
     private:
         void getTokens_When_TextIs();
         void getLength_When_TextIs();
+        void getTokens_When_TextIsNegNum();
 
         // Rule: None of token must be UNKNOWN type.
         void raiseError_When_InvalidChar();
