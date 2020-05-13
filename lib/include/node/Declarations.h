@@ -24,8 +24,6 @@ class Declarations: public Node {
     private:
         Declaration* declaration;
         Declarations* declarations;
-
-        bool isNextDecl();
 };
 
 

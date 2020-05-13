@@ -20,8 +20,6 @@ void DeclarationsTest::getDeclarations_When_CurrentIsEmpty() {
     declarations->construct();
 
     expect("", declarations->getDeclaration() != 0);
-    expect("", declarations->getDeclaration()->getIds() == 0);
-    expect("", declarations->getDeclaration()->getType() == 0);
     expect("", declarations->getDeclarations() == 0);
 
     delete declarations;
@@ -48,9 +46,7 @@ void DeclarationsTest::getDeclarations_When_NotConstruct() {
     Indexer<Symbol>* indexer = new Indexer<Symbol>(symbols);
     Declarations* declarations = new Declarations(indexer);
 
-    expect("", declarations->getDeclaration() != 0);
-    expect("", declarations->getDeclaration()->getIds() == 0);
-    expect("", declarations->getDeclaration()->getType() == 0);
+    expect("", declarations->getDeclaration() == 0);
     expect("", declarations->getDeclarations() == 0);
 
     delete declarations;

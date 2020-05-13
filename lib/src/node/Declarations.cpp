@@ -4,9 +4,7 @@
 
 #include "../../include/node/Declarations.h"
 
-Declarations::Declarations(Indexer<Symbol>* tokens) : Node(tokens) {
-    declarations = 0;
-    declaration = 0;
+Declarations::Declarations(Indexer<Symbol>* tokens) : Node(tokens), declaration(0), declarations(0) {
 }
 
 Declarations::~Declarations() {
@@ -18,7 +16,9 @@ void Declarations::construct() {
     declaration = new Declaration(indexer);
     declaration->construct();
 
-    if (declarations) {
+    if (nextIf(current()->isId()) && nextIf(current()->isColon())) {
+        indexer->back();
+        indexer->back();
         declarations = new Declarations(indexer);
         declarations->construct();
     }
@@ -43,19 +43,4 @@ Declaration *Declarations::getDeclaration() const {
 
 Declarations *Declarations::getDeclarations() const {
     return declarations;
-}
-
-bool Declarations::isNextDecl() {
-    // Check id
-    if (!indexer->end() && current()->isId()) {
-        indexer->next();
-
-        // check :
-        if(!indexer->end() && current()->isColon()) {
-            indexer->back();
-            return true;
-        }
-    }
-
-    return false;
 }
