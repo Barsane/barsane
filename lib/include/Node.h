@@ -72,6 +72,8 @@ class Node {
 
         bool grantNext(const bool cond);
 
+        bool isFactor();
+
     private:
         // Internal usage fo destructor
         inline static set<Indexer<Symbol>*> __indexers__;

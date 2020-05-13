@@ -59,3 +59,11 @@ inline bool Node::nextIf(const bool cond) {
 inline bool Node::grantNext(const bool cond) {
     return !indexer->end() && cond;
 }
+
+inline bool Node::isFactor() {
+    str token = str(current()->getToken());
+    return current()->isMinus()         ||
+           current()->isId()            ||
+           token.isNumeric()            ||
+           current()->isLeftBracket();
+}

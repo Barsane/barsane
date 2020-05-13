@@ -15,6 +15,7 @@
 #include "../include/IdsTest.h"
 #include "../include/DeclarationTest.h"
 #include "../include/DeclarationsTest.h"
+#include "../include/FactorTest.h"
 
 using namespace std;
 
@@ -42,6 +43,7 @@ int main() {
     IdsTest().run();
     DeclarationTest().run();
     DeclarationsTest().run();
+    FactorTest().run();
 
     print_rst();
 
