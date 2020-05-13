@@ -20,7 +20,7 @@ void Ids::construct() {
         id = new Id(indexer);
         id->construct();
     } else {
-        string msg = "An id must be match this pattern: [a-zA-Z_][a-zA-Z0-9_]*";
+        string msg = "An id must match this pattern: [a-zA-Z_][a-zA-Z0-9_]*";
         unsigned int line = current()->getLine();
         unsigned int colon = current()->getColon();
         Error error = Error(UNEXPECTED_TOKEN, msg, line, colon);

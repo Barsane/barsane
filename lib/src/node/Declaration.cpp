@@ -4,34 +4,27 @@
 
 #include "../../include/node/Declaration.h"
 
-Declaration::Declaration(Indexer<Symbol>* tokens) : Node(tokens), id(0), type(0) {
+Declaration::Declaration(Indexer<Symbol>* tokens) : Node(tokens), ids(0), type(0) {
 }
 
 Declaration::~Declaration() {
-    delete id;
+    delete ids;
     delete type;
 }
 
 void Declaration::construct() {
-    // TODO: handle error for else statement
     // id
-    id = new Id(indexer);
-    id->construct();
+    ids = new Ids(indexer);
+    ids->construct();
 
-    // Check :
-    if (!indexer->end() && current()->isColon()) {
-        indexer->next();
-
-        // type
-        if (!indexer->end() && current()->isType()) {
-            type = new Type(indexer);
-            type->construct();
-        }
+    // ":" type
+    if (validate(current()->isColon(), "Expected ':' at end of id.")) {
+        type = new Type(indexer);
+        type->construct();
     }
 
-    // check ;
-    if (!indexer->end() && current()->isSemiColon())
-        indexer->next();
+    // ";"
+    validate(current()->isSemiColon(), "Expected ';' at end of declaration.");
 }
 
 const string Declaration::json(unsigned int indentSize) const {
@@ -41,16 +34,16 @@ const string Declaration::json(unsigned int indentSize) const {
     repr << "{\n" << indent
          << "\"type\": \"Declaration\","
          << "\n" << indent
-         << "\"id\": " << id->json(indentSize + 1) << ",\n" << indent
+         << "\"id\": " << ids->json(indentSize + 1) << ",\n" << indent
          << "\"type_id\": " << type->json(indentSize + 1)
          << "\n" << backIndent << "}";
     return repr.str();
 }
 
-Id *Declaration::getId() const {
-    return nullptr;
+Ids *Declaration::getIds() const {
+    return ids;
 }
 
 Type *Declaration::getType() {
-    return nullptr;
+    return type;
 }

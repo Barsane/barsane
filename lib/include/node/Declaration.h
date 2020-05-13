@@ -9,7 +9,7 @@
 #include "../Node.h"
 #include "../Symbol.h"
 #include "../Indexer.h"
-#include "Id.h"
+#include "Ids.h"
 #include "Type.h"
 
 class Declaration: Node {
@@ -21,11 +21,11 @@ class Declaration: Node {
         void construct();
         const string json(unsigned int indentSize = 1) const;
 
-        Id* getId() const;
+        Ids* getIds() const;
         Type* getType();
 
     private:
-        Id* id;
+        Ids* ids;
         Type* type;
 
 };
