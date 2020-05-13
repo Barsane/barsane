@@ -33,7 +33,7 @@ class Ids: public Node {
         /**
          * This methods builds a set of node id in checking
          * first if the current token is an id. If it is not the
-         * case, it raises an error. it gets recursively all node id while
+         * case, it raises an error. Then, it gets recursively all node id while
          * the next token after each id is a coma. In the end, it points
          * on the next token regarding the indexer.
          */
