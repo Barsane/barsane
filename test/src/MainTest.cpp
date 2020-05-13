@@ -14,6 +14,7 @@
 #include "../include/TypeTest.h"
 #include "../include/IdsTest.h"
 #include "../include/DeclarationTest.h"
+#include "../include/DeclarationsTest.h"
 
 using namespace std;
 
@@ -40,6 +41,7 @@ int main() {
     TypeTest().run();
     IdsTest().run();
     DeclarationTest().run();
+    DeclarationsTest().run();
 
     print_rst();
 
