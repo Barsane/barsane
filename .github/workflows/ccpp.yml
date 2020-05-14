@@ -18,4 +18,4 @@ jobs:
     - name: Run tests
       run: make build:lib build:test test
     - name: Check heap memory
-      run: make build:lib build:test test && apt-get install -y valgrind && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose bin/testbarzane
+      run: sudo apt-get install -y valgrind && make check:memory
