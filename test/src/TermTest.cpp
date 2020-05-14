@@ -89,11 +89,11 @@ void TermTest::positionChanged_WhenConstruct() {
     Indexer<Symbol>* indexer = new Indexer<Symbol>(symbols);
     Term* term = new Term(indexer);
 
+    unsigned int previous = indexer->position();
     term->construct();
+    unsigned int current = indexer->position();
 
-    expect("", term->getFactor() != 0);
-    expect("", term->getOperator() != 0);
-    expect("", term->getTerm() != 0);
+    expect("", current == previous + 4);
 
     delete term;
 }

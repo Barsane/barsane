@@ -16,6 +16,8 @@
 #include "../include/DeclarationTest.h"
 #include "../include/DeclarationsTest.h"
 #include "../include/FactorTest.h"
+#include "../include/TermTest.h"
+#include "../include/OperationTest.h"
 
 using namespace std;
 
@@ -32,18 +34,20 @@ void testExpect() {
 int main() {
     testExpect();
 
-//    SymbolTest().run();
-//    IndexerTest().run();
-//    StrTest().run();
-//    ErrorHandlerTest().run();
-//    LexerTest().run();
-//    NumberTest().run();
-//    IdTest().run();
-//    TypeTest().run();
-//    IdsTest().run();
-//    DeclarationTest().run();
-//    DeclarationsTest().run();
+    SymbolTest().run();
+    IndexerTest().run();
+    StrTest().run();
+    ErrorHandlerTest().run();
+    LexerTest().run();
+    NumberTest().run();
+    IdTest().run();
+    TypeTest().run();
+    IdsTest().run();
+    DeclarationTest().run();
+    DeclarationsTest().run();
     FactorTest().run();
+    TermTest().run();
+    OperationTest().run();
 
     print_rst();
 
