@@ -45,6 +45,7 @@ void Factor::construct() {
         if (validate(current()->isRightBracket(), "Expected ')' at end of operation")) {
             indexer->back();
             rightBracket = current();
+            indexer->next();
         }
 
     } else {
