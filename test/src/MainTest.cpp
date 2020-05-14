@@ -18,6 +18,8 @@
 #include "../include/FactorTest.h"
 #include "../include/TermTest.h"
 #include "../include/OperationTest.h"
+#include "../include/BooleanTest.h"
+#include "../include/StringTest.h"
 
 using namespace std;
 
@@ -48,6 +50,8 @@ int main() {
     FactorTest().run();
     TermTest().run();
     OperationTest().run();
+    BooleanTest().run();
+    StringTest().run();
 
     print_rst();
 
