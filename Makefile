@@ -129,6 +129,19 @@ run-test:
 
 test: run-test
 
+check: check-memory
+
+check%memory:
+	${INFO} "Check requirement..."
+ifdef VALGRIND
+	${INFO} "Found $(VALGRIND)"
+else
+	${ERROR} "Please install valgrind."
+endif
+	${INFO} "Execute heap memory report..."
+	$(VALGRIND_CMD) $(TEST_TARGET)
+	${INFO} "Execute complete"
+
 .SILENT:
 
 .PHONY: clean build run-test run
