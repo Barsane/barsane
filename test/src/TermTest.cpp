@@ -467,4 +467,6 @@ void TermTest::getTerm_When_NestedDeep() {
             expect("", term->getTerm() == 0);
         });
     });
+
+    delete term;
 }
