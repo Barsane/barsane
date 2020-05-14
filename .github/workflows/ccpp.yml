@@ -17,5 +17,7 @@ jobs:
       run: make buid
     - name: Run tests
       run: make build:lib build:test test
+    - name: Install valgrind
+      run: sudo apt-get install -y valgrind
     - name: Check heap memory
-      run: sudo apt-get install -y valgrind && make check:memory
+      run: make check:memory
