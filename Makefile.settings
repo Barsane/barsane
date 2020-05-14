@@ -10,6 +10,5 @@ ERROR := @bash -c 'printf $(RED); echo "ERROR: $$1"; printf $(NC); exit 1' MESSA
 rwildcard = $(shell find $1 -name "$2")
 VALGRIND := $(shell which valgrind 2>/dev/null)
 VALGRIND_CMD := valgrind --leak-check=full --show-leak-kinds=all \
-	--track-origins=yes \
+	--track-origins=yes  --error-exitcode=1 \
 	--verbose $(1)
-
