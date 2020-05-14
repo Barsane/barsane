@@ -14,66 +14,85 @@
 
 class Operation;
 
+
 /**
- * factor: ["-"] {id} | ["-"] {number} | "(" {operation} ")"
- */
+* A node factor class is used to determine a mathematical expression
+* of the Barzane abstract syntax grammar. It recursively constructs
+* the syntax by creating node id, number or operation.
+* Its definition looks like:
+*      factor: ["-"] {id} | ["-"] {number} | "(" {operation} ")"
+*/
 class Factor: public Node {
 
     public:
         /**
-         * TODO
-         * @param tokens
+         * Constructor
+         *
+         * @param tokens: a indexer of a set of tokens.
          */
         Factor(Indexer<Symbol>* tokens);
 
         /**
-         * TODO
+         * Destructor
          */
         virtual ~Factor();
 
         /**
-         * TODO
+         * It walks the indexer to extract first minus like the
+         * beginning token if it exists. The next token of indexer
+         * is also processed as a id if it is a login or as a number
+         * or again if it is a left bracket token.
          */
         void construct();
 
         /**
-         * TODO
+         * A json representative object.
+         *
+         * @param indentSize: it is by default 1 and defines the total space
+         * that represents an indentation for each json node
+         * @return a string that represents the object node factor.
          */
         const string json(unsigned int indentSize = 1) const;
 
         /**
-         * TODO
-         * @return
+         * Get minus.
+         *
+         * @return a symbol (@see Symbol).
          */
         Symbol *getMinus() const;
 
         /**
-         * TODO
-         * @return
+         * Get id.
+         *
+         * @return a node id (@see Id).
          */
         Id *getId() const;
 
         /**
-         * TODO
-         * @return
+         * Get number.
+         *
+         * @return a node number (@see Number).
          */
         Number *getNumber() const;
 
         /**
-         * TODO
-         * @return
+         * Get left bracket.
+         *
+         * @return a symbol (@see Symbol).
          */
         Symbol *getLeftBracket() const;
 
         /**
-         * TODO
-         * @return
+         * Get right bracket.
+         *
+         * @return a symbol (@see Symbol).
          */
         Symbol *getRightBracket() const;
 
         /**
-         * TODO
-         * @return
+         * Get operation.
+         *
+         * @return an operation (@see Operation).
          */
         Operation *getOperation() const;
 
