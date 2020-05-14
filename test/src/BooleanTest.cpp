@@ -22,7 +22,7 @@ void BooleanTest::getValue_When_CurrentIsEmpty() {
 
     expect("", boolean->getValue() == BooleanType::UNDEFINED);
 
-    // delete boolean;
+    delete boolean;
 }
 
 void BooleanTest::getValue_When_NotConstruct() {
