@@ -16,4 +16,4 @@ jobs:
     - name: Build lib, test and main
       run: make buid
     - name: Run tests
-      run: make test
+      run: make build:lib build:test test
