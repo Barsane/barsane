@@ -20,6 +20,7 @@
 #include "../include/OperationTest.h"
 #include "../include/BooleanTest.h"
 #include "../include/StringTest.h"
+#include "../include/ExpressionTest.h"
 
 using namespace std;
 
@@ -52,6 +53,7 @@ int main() {
     OperationTest().run();
     BooleanTest().run();
     StringTest().run();
+    ExpressionTest().run();
 
     print_rst();
 
