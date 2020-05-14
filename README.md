@@ -1,5 +1,7 @@
 # BARZANE
 
+![Barzane CI](https://github.com/Barsane/barsane/workflows/Barzane%20CI/badge.svg)
+
 ## Running test on Linux
 
 From the root project, run the following commands:
