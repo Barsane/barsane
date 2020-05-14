@@ -21,11 +21,11 @@ term: {factor} ("*" | "/") {term} | {factor}
 
 operation: {term} ("+" | "-") {operation} | {term}
 
-affect: {id} "=" ({operation} | {string} | {boolean}) ";"
+expression: {operation} | {string} | {boolean}
+
+affect: {id} "=" {expression} ";"
 
 affects: {affect} | {affect} {affects}
-
-expression: {operation} | {string} | {boolean}
 
 print: "print" {expression} ";"
 
