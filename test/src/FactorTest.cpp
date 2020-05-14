@@ -287,6 +287,7 @@ void FactorTest::getFactor_When_NestedDeep() {
     factor->construct();
 
     // (-3 * ( 6 / 3 + 1 * (2 + 7) / 3)) + x * ( x + 5)
+    // + x * ( x + 5): is ignored.
     expect("", factor->getMinus() == 0);
     expect("", factor->getId() == 0);
     expect("", factor->getNumber() == 0);
@@ -407,6 +408,9 @@ void FactorTest::getFactor_When_NestedDeep() {
         Symbol* right = factor->getRightBracket();
         expect("", right->getToken() == ")");
     });
+
+    expect("The current token should be point on plus",
+            indexer->current() == symbol19);
 
     delete factor;
 }
