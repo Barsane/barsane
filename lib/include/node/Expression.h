@@ -15,20 +15,63 @@
 /*
  * expression: {operation} | {string} | {boolean}
  */
+/**
+* A node expression class is used to determine if a token is
+* an operation, string or boolean of the Barzane abstract syntax grammar.
+* Its definition looks like:
+*       boolean: "true" | "false"
+*/
 class Expression: public Node {
     public:
+        /**
+         * Constructor.
+         *
+         * @param tokens: a indexer of a set of tokens.
+         */
         Expression(Indexer<Symbol>* tokens);
 
+        /**
+         * Destructor
+         */
         virtual ~Expression();
 
+        /**
+         * It checks if the current token is start with a first
+         * token operation to extract operation if it is a boolean
+         * or a string. Otherwise it raises an error. In the end, this
+         * one is recovered like an operation or boolean or string since
+         * the condition statement.
+         */
         void construct();
 
+        /**
+         * A json representative object.
+         *
+         * @param indentSize: it is by default 1 and defines the total space
+         * that represents an indentation for each json node
+         * @return a string that represents the object node expression.
+         */
         const string json(unsigned int indentSize = 1) const;
 
+        /**
+         * Get operation.
+         *
+         * @return a node operation (@see Operation).
+         */
         Operation *getOperation() const;
 
-        String *getStringExpr() const;
+        /**
+         * Get string.
+         *
+         * @return a node string (@see String)
+         */
+        String *getString() const;
 
+        /**
+         * Get boolean.
+         *
+         * @return a node boolean (@see Boolean).
+         */
         Boolean* getBoolean() const;
 
     private:
