@@ -42,7 +42,7 @@ Operation *Expression::getOperation() const {
     return operation;
 }
 
-String *Expression::getStringExpr() const {
+String *Expression::getString() const {
     return stringExpr;
 }
 

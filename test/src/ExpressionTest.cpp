@@ -22,7 +22,7 @@ void ExpressionTest::getValue_When_CurrentIsEmpty() {
     expression->construct();
 
     expect("", expression->getOperation() == 0);
-    expect("", expression->getStringExpr() == 0);
+    expect("", expression->getString() == 0);
     expect("", expression->getBoolean() == 0);
 
     delete expression;
@@ -36,7 +36,7 @@ void ExpressionTest::getValue_When_NotConstruct() {
     Expression* expression = new Expression(indexer);
 
     expect("", expression->getOperation() == 0);
-    expect("", expression->getStringExpr() == 0);
+    expect("", expression->getString() == 0);
     expect("", expression->getBoolean() == 0);
 
     delete expression;
@@ -52,7 +52,7 @@ void ExpressionTest::getValue_When_CurrentIsOperation() {
     expression->construct();
 
     expect("", expression->getOperation() != 0);
-    expect("", expression->getStringExpr() == 0);
+    expect("", expression->getString() == 0);
     expect("", expression->getBoolean() == 0);
 
     delete expression;
@@ -68,7 +68,7 @@ void ExpressionTest::getValue_When_CurrentIsBoolean() {
     expression->construct();
 
     expect("", expression->getOperation() == 0);
-    expect("", expression->getStringExpr() == 0);
+    expect("", expression->getString() == 0);
     expect("", expression->getBoolean() != 0);
 
     delete expression;
@@ -84,7 +84,7 @@ void ExpressionTest::getValue_When_CurrentIsString() {
     expression->construct();
 
     expect("", expression->getOperation() == 0);
-    expect("", expression->getStringExpr() != 0);
+    expect("", expression->getString() != 0);
     expect("", expression->getBoolean() == 0);
 
     delete expression;
@@ -100,7 +100,7 @@ void ExpressionTest::getValue_When_BadToken() {
     expression->construct();
 
     expect("", expression->getOperation() == 0);
-    expect("", expression->getStringExpr() == 0);
+    expect("", expression->getString() == 0);
     expect("", expression->getBoolean() == 0);
 
     delete expression;
