@@ -23,6 +23,7 @@
 #include "../include/ExpressionTest.h"
 #include "../include/AffectTest.h"
 #include "../include/AffectsTest.h"
+#include "../include/PrintTest.h"
 
 using namespace std;
 
@@ -58,6 +59,7 @@ int main() {
     ExpressionTest().run();
     AffectTest().run();
     AffectsTest().run();
+    PrintTest().run();
 
     print_rst();
 
