@@ -6,7 +6,7 @@
 #define BARZANE_PRINT_H
 
 #include "../Node.h"
-#include "Id.h"
+#include "Expression.h"
 
 class Print: public Node {
 
@@ -18,10 +18,10 @@ class Print: public Node {
 
         const string json(unsigned int indentSize = 1) const;
 
-        Id *getId() const;
+        Expression *getExpression() const;
 
-private:
-        Id* id;
+    private:
+        Expression* expression;
 };
 
 

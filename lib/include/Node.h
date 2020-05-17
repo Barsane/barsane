@@ -74,6 +74,8 @@ class Node {
 
         bool isFactor();
 
+        bool isExpression();
+
     private:
         // Internal usage fo destructor
         inline static set<Indexer<Symbol>*> __indexers__;

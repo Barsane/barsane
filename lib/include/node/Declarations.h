@@ -16,7 +16,6 @@
 class Declarations: public Node {
 
     public:
-
         /**
          * Constructor
          *

@@ -67,3 +67,8 @@ inline bool Node::isFactor() {
            token.isNumeric()            ||
            current()->isLeftBracket();
 }
+
+inline bool Node::isExpression() {
+    // isValue = number || string || boolean
+    return isFactor() || current()->isValue();
+}

@@ -4,26 +4,26 @@
 
 #include "../../include/node/Print.h"
 
-Print::Print(Indexer<Symbol>* tokens) : Node(tokens), id(0) {
+Print::Print(Indexer<Symbol>* tokens) : Node(tokens), expression(0) {
 }
 
 Print::~Print() {
-    delete id;
+    delete expression;
 }
 
 void Print::construct() {
-    // print
+    // "print"
     indexer->next();
 
-    // TODO: extend to expression
-    if (!indexer->end() && current()->isId()) {
-        id = new Id(indexer);
-        id->construct();
+    // expression
+    unsigned int pos = indexer->position();
+    if (validate(isExpression(), "Invalid expression.")) {
+        indexer->reindex(pos);
+        expression = new Expression(indexer);
     }
 
-    // Check ";"
-    if (!indexer->end() && current()->isSemiColon())
-        indexer->next();
+    validate(current()->isSemiColon(),
+            "Expected ';' at end of print instruction");
 }
 
 const string Print::json(unsigned int indentSize) const {
@@ -32,11 +32,12 @@ const string Print::json(unsigned int indentSize) const {
     string backIndent(indentSize - 1, INDENT);
     repr << "{\n" << indent
          << "\"type\": \"Print\"," << "\n" << indent
-         << "\"expression\": " << id->json(indentSize + 1)
+         << "\"expression\": " << expression->json(indentSize + 1)
          << "\n" << backIndent << "}";
     return repr.str();
 }
 
-Id *Print::getId() const {
-    return id;
+
+Expression *Print::getExpression() const {
+    return expression;
 }
