@@ -24,6 +24,7 @@
 #include "../include/AffectTest.h"
 #include "../include/AffectsTest.h"
 #include "../include/PrintTest.h"
+#include "../include/BuiltinsTest.h"
 
 using namespace std;
 
@@ -60,6 +61,7 @@ int main() {
     AffectTest().run();
     AffectsTest().run();
     PrintTest().run();
+    BuiltinsTest().run();
 
     print_rst();
 
