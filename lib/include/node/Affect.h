@@ -8,7 +8,7 @@
 
 #include "../Node.h"
 #include "Id.h"
-#include "Number.h"
+#include "Expression.h"
 
 class Affect: public Node {
     public:
@@ -20,9 +20,11 @@ class Affect: public Node {
 
         Id* getId() const;
 
+        Expression *getExpression() const;
+
     private:
         Id* id;
-        Number* number;
+        Expression* expression;
 };
 
 

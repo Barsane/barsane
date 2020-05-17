@@ -46,16 +46,13 @@ Affects *Affects::getAffects() const {
 }
 
 bool Affects::isNextAffect() {
-    // Check id
-    if (!indexer->end() && current()->isId()) {
-        indexer->next();
-
-        // check =
-        if(!indexer->end() && current()->isAssignment()) {
-            indexer->back();
-            return true;
-        }
+    unsigned int position = indexer->position();
+    bool isNext = false;
+    if (nextIf(current()->isId()) && grantNext(current()->isAssignment())) {
+        isNext = true;
     }
 
-    return false;
+    indexer->reindex(position);
+
+    return isNext;
 }
