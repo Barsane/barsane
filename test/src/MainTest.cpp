@@ -21,6 +21,8 @@
 #include "../include/BooleanTest.h"
 #include "../include/StringTest.h"
 #include "../include/ExpressionTest.h"
+#include "../include/AffectTest.h"
+#include "../include/AffectsTest.h"
 
 using namespace std;
 
@@ -54,6 +56,8 @@ int main() {
     BooleanTest().run();
     StringTest().run();
     ExpressionTest().run();
+    AffectTest().run();
+    AffectsTest().run();
 
     print_rst();
 
