@@ -133,7 +133,7 @@ void PrintTest::getPrint_When_BadKeyword() {
 
 void PrintTest::getPrint_When_BadExpr() {
     string key = "print";
-    string expr = "hello";
+    string expr = "!";
     string semicolon = ";";
     Symbol* symbolPrint = new Symbol(key, 1, 2);
     Symbol* symbolExpr = new Symbol(expr, 1, 5);
@@ -144,12 +144,7 @@ void PrintTest::getPrint_When_BadExpr() {
 
     print->construct();
 
-    expectIf("", print->getExpression() != 0, [&]() {
-        Expression* expression = new Expression(indexer);
-        expect("", expression->getString() == 0);
-        expect("", expression->getBoolean() == 0);
-        expect("", expression->getOperation() == 0);
-    });
+    expect("", print->getExpression() == 0);
 
     delete print;
 }
