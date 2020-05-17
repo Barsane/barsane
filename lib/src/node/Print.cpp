@@ -12,16 +12,19 @@ Print::~Print() {
 }
 
 void Print::construct() {
-    // "print"
-    indexer->next();
 
-    // expression
-    unsigned int pos = indexer->position();
-    if (validate(isExpression(), "Invalid expression.")) {
-        indexer->reindex(pos);
-        expression = new Expression(indexer);
+    // "print"
+    if (validate(current()->isPrint(), "Expected 'print' keyword.")) {
+        // expression
+        unsigned int pos = indexer->position();
+        if (validate(isExpression(), "Invalid expression.")) {
+            indexer->reindex(pos);
+            expression = new Expression(indexer);
+            expression->construct();
+        }
     }
 
+    // ";"
     validate(current()->isSemiColon(),
             "Expected ';' at end of print instruction");
 }
