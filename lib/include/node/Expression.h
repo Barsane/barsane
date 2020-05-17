@@ -12,14 +12,12 @@
 #include "Operation.h"
 #include "String.h"
 
-/*
- * expression: {operation} | {string} | {boolean}
- */
+
 /**
 * A node expression class is used to determine if a token is
 * an operation, string or boolean of the Barzane abstract syntax grammar.
 * Its definition looks like:
-*       boolean: "true" | "false"
+*       expression: {operation} | {string} | {boolean}
 */
 class Expression: public Node {
     public:
