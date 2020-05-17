@@ -12,10 +12,15 @@ Builtins::~Builtins() {
 }
 
 void Builtins::construct() {
-    // TODO: recursive buitlins
     if (current()->isPrint()) {
         print = new Print(indexer);
         print->construct();
+    } else {
+        string msg = "Invalid builtin function.";
+        unsigned int line = current()->getLine();
+        unsigned int colon = current()->getColon();
+        Error error = Error(UNEXPECTED_ERROR, msg, line, colon);
+        errorHandler.add(error);
     }
 }
 
