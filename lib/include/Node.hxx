@@ -69,6 +69,23 @@ inline bool Node::isFactor() {
 }
 
 inline bool Node::isExpression() {
-    // isValue = number || string || boolean
     return isFactor() || current()->isValue();
+}
+
+inline bool Node::isDeclaration() {
+    unsigned int pos = indexer->position();
+    bool isOk = nextIf(current()->isId()) && grantNext(current()->isColon());
+    indexer->reindex(pos);
+    return isOk;
+}
+
+inline bool Node::isAffect() {
+    unsigned int pos = indexer->position();
+    bool isOk = nextIf(current()->isId()) && grantNext(current()->isAssignment());
+    indexer->reindex(pos);
+    return isOk;
+}
+
+inline bool Node::isBuiltin() {
+    return grantNext(current()->isPrint());
 }
