@@ -33,6 +33,6 @@ builtins: {print}
 
 instruction: {declarations} | {affects} | {builtins}
 
-instructions: instruction | instruction instructions
+instructions: {instruction} | {instruction} {instructions}
 
 program: {instructions}
