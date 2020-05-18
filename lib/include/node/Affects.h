@@ -63,8 +63,6 @@ class Affects: public Node {
     private:
         Affect* affect;
         Affects* affects;
-
-        bool isNextAffect();
 };
 
 

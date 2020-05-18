@@ -18,7 +18,7 @@ void Affects::construct() {
     affect = new Affect(indexer);
     affect->construct();
 
-    if (isNextAffect()) {
+    if (isAffect()) {
         affects = new Affects(indexer);
         affects->construct();
     }
@@ -43,16 +43,4 @@ Affect *Affects::getAffect() const {
 
 Affects *Affects::getAffects() const {
     return affects;
-}
-
-bool Affects::isNextAffect() {
-    unsigned int position = indexer->position();
-    bool isNext = false;
-    if (nextIf(current()->isId()) && grantNext(current()->isAssignment())) {
-        isNext = true;
-    }
-
-    indexer->reindex(position);
-
-    return isNext;
 }
