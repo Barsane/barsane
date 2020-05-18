@@ -239,4 +239,6 @@ void InstructionTest::getInstruction_When_BadToken() {
     expect("", instruction->getDeclarations() == 0);
     expect("", instruction->getBuiltins() == 0);
     expect("", instruction->getAffects() == 0);
+
+    delete instruction;
 }
