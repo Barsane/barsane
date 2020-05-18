@@ -6,10 +6,7 @@
 #define BARZANE_AST_H
 
 #include "Node.h"
-#include "node/Declarations.h"
-#include "node/Affects.h"
-#include "node/Builtins.h"
-#include "Error.h"
+#include "node/Instructions.h"
 
 /**
  * It is a tree of the abstract syntactic structure of source
@@ -45,32 +42,13 @@ class AST: public Node {
         void construct();
 
         /**
-         * A representative object of node class.
-         * TODO: arg
-         * @return a string represented the instantiated object.
+         * A json representative object.
+         *
+         * @param indentSize: it is by default 1 and defines the total space
+         * that represents an indentation for each json node
+         * @return a string that represents the object node ast.
          */
         const string json(unsigned int indentSize) const;
-
-        /**
-         * Get declarations.
-         *
-         * @return a pointer of declarations (@see Declarations).
-         */
-        Declarations* getDeclarations() const;
-
-        /**
-         * Get affects.
-         *
-         * @return a pointer of affects (@see Affects).
-         */
-        Affects* getAffects() const;
-
-        /**
-         * Get builtins functions.
-         *
-         * @return a pointer of builtins (@see Builtins).
-         */
-        Builtins* getBuiltins() const;
 
         /**
          * Get error handler.
@@ -80,13 +58,15 @@ class AST: public Node {
          */
         ErrorHandler& getErrorHandler() const;
 
-    private:
-        Declarations* declarations;
-        Affects* affects;
-        Builtins* builtins;
+        /**
+         * Get instructions.
+         *
+         * @return a node instructions.
+         */
+        Instructions *getInstructions() const;
 
-        void buildNodeStartWithId();
-        void buildBuiltins();
+    private:
+        Instructions* instructions;
 };
 
 #endif //BARZANE_AST_H
