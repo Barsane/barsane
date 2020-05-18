@@ -16,9 +16,7 @@ void Declarations::construct() {
     declaration = new Declaration(indexer);
     declaration->construct();
 
-    if (nextIf(current()->isId()) && nextIf(current()->isColon())) {
-        indexer->back();
-        indexer->back();
+    if (isDeclaration()) {
         declarations = new Declarations(indexer);
         declarations->construct();
     }
