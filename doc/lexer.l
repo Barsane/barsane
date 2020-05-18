@@ -31,4 +31,8 @@ print: "print" {expression} ";"
 
 builtins: {print}
 
-program: {declarations} | {affects} | {builtins}
+instruction: {declarations} | {affects} | {builtins}
+
+instructions: instruction | instruction instructions
+
+program: {instructions}
