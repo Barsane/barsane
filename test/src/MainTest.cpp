@@ -27,6 +27,7 @@
 #include "../include/BuiltinsTest.h"
 #include "../include/InstructionTest.h"
 #include "../include/InstructionsTest.h"
+#include "../include/ASTTest.h"
 
 using namespace std;
 
@@ -66,6 +67,7 @@ int main() {
     BuiltinsTest().run();
     InstructionTest().run();
     InstructionsTest().run();
+    ASTTest().run();
 
     print_rst();
 
