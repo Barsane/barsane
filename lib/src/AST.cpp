@@ -12,8 +12,10 @@ AST::~AST() {
 }
 
 void AST::construct() {
-    instructions = new Instructions(indexer);
-    instructions->construct();
+    if (!indexer->end()) {
+        instructions = new Instructions(indexer);
+        instructions->construct();
+    }
 }
 
 const string AST::json(unsigned int indentSize) const {
